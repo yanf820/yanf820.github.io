@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JAX-RS规范 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="###Java API for RESTful Web ServicesJAX-RS: Java API for RESTful Web Services是一个Java编程语言的应用程序接口,支持按照 表象化状态转变 (REST)架构风格创建Web服务[1]. JAX-RS使用了Java SE 5引入的Java 标注来简化Web服务客户端和服务端的开发和部署。
+###版本说明
+
+名词解释
+
+JCP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAX-RS规范">
+<meta property="og:url" content="http://yoursite.com/2016/09/27/JAX-RS规范/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="###Java API for RESTful Web ServicesJAX-RS: Java API for RESTful Web Services是一个Java编程语言的应用程序接口,支持按照 表象化状态转变 (REST)架构风格创建Web服务[1]. JAX-RS使用了Java SE 5引入的Java 标注来简化Web服务客户端和服务端的开发和部署。
+###版本说明
+
+名词解释
+
+JCP">
+<meta property="og:updated_time" content="2016-09-27T06:47:14.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAX-RS规范">
+<meta name="twitter:description" content="###Java API for RESTful Web ServicesJAX-RS: Java API for RESTful Web Services是一个Java编程语言的应用程序接口,支持按照 表象化状态转变 (REST)架构风格创建Web服务[1]. JAX-RS使用了Java SE 5引入的Java 标注来简化Web服务客户端和服务端的开发和部署。
+###版本说明
+
+名词解释
+
+JCP">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JAX-RS规范" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/27/JAX-RS规范/" class="article-date">
+  <time datetime="2016-09-27T06:46:09.000Z" itemprop="datePublished">2016-09-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAX-RS规范
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###Java API for RESTful Web Services<br>JAX-RS: Java API for RESTful Web Services是一个Java编程语言的应用程序接口,支持按照 表象化状态转变 (REST)架构风格创建Web服务[1]. JAX-RS使用了Java SE 5引入的Java 标注来简化Web服务客户端和服务端的开发和部署。</p>
+<p>###版本说明</p>
+<ul>
+<li><p>名词解释</p>
+<blockquote>
+<p>JCP:Java Community Process<br>一个开放的国际组织，主要由Java开发者以及被授权者组成，职能是发展和更新。<br>Java技术和JCP两者的原创者都是SUN计算机公司。然而，JCP已经由SUN于1995年创造Java的非正式过程，演进到如今有数百名来自世界各地Java代表成员一同监督Java发展的正式程序。<br>JCP维护的规范包括J2ME、J2SE、J2EE，XML，OSS，JAIN等。组织成员可以提交JSR（Java Specification Requests），通过特定程序以后，进入到下一版本的规范里面。</p>
+<p>JSR:Java Specification Requests<br>Java 规范提案。是指向JCP(Java Community Process)提出新增一个标准化技术规范的正式请求。任何人都可以提交JSR，以向Java平台增添新的API和服务。JSR已成为Java界的一个重要标准。<br>即为一个规范代号：JSR311，JSR303等<br>完整JSR列表请查看<a href="https://www.jcp.org/en/jsr/all" target="_blank" rel="external">JCP官网</a></p>
+</blockquote>
+</li>
+<li><p>版本<br>JSR311: JAX-RS 1.0<br>JSR399: JAX-RS 2.0</p>
+</li>
+</ul>
+<p>###JAX_RS对应实现</p>
+<ul>
+<li>Apache CXF，开源的Web服务框架。</li>
+<li>Jersey， 由Sun提供的JAX-RS的参考实现。</li>
+<li>RESTEasy，JBoss的实现。</li>
+<li>Restlet，由Jerome Louvel和Dave Pawson开发，是最早的REST框架，先于JAX-RS出现。</li>
+<li>Apache Wink，一个Apache软件基金会孵化器中的项目，其服务模块实现JAX-RS规范</li>
+</ul>
+<p>这里讨论Jersey和RESTEasy：<br>Jersey1.x：JAX-RS 1.0<br>Jersey2.x：JAX-RS 2.0</p>
+<p>RESTEasy1.x/2.x：JAX-RS 1.0<br>RESTEasy3.x：JAX-RS 2.0</p>
+<p>###Jar包区别   </p>
+<ul>
+<li>jsr311-api：JAX-RS 1.0 的官方规范包</li>
+<li>javax.ws.rs-api：JAX-RS 2.0 的官方规范包  </li>
+</ul>
+<p>以上为官方标准规范包，其中包含对应的注解和一些辅助类</p>
+<ul>
+<li>jaxrs-api：RESTEasy规范包，其中包含对应版本JAX-RS规范的内容以及自定义的异常和接口</li>
+<li>jersey-core：Jersey规范包，包含对应版本JAX-RS规范的内容以及部分实现，余下实现在jersey的其他包中</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/27/JAX-RS规范/" data-id="citl4f95n00006c9ifw6yg1yb" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/09/27/RESTEasy注解及使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">RESTEasy注解及使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/27/JAX-RS规范/">JAX-RS规范</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/27/RESTEasy注解及使用/">RESTEasy注解及使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
