@@ -740,7 +740,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/27/JAX-RS规范/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/27/JAX-RS规范的版本.实现.jar对应关系/" itemprop="url">
                   JAX-RS规范
                 </a>
               
@@ -803,18 +803,20 @@
       
         
           
-            <h3 id="Java-API-for-RESTful-Web-Services"><a href="#Java-API-for-RESTful-Web-Services" class="headerlink" title="Java API for RESTful Web Services"></a>Java API for RESTful Web Services</h3><p>JAX-RS: Java API for RESTful Web Services是一个Java编程语言的应用程序接口,支持按照 表象化状态转变 (REST)架构风格创建Web服务[1]. JAX-RS使用了Java SE 5引入的Java 标注来简化Web服务客户端和服务端的开发和部署。</p>
-<h3 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h3><ul>
-<li><p>名词解释</p>
-<blockquote>
-<p>JCP:Java Community Process<br>一个开放的国际组织，主要由Java开发者以及被授权者组成，职能是发展和更新。<br>Java技术和JCP两者的原创者都是SUN计算机公司。然而，JCP已经由SUN于1995年创造Java的非正式过程，演进到如今有数百名来自世界各地Java代表成员一同监督Java发展的正式程序。<br>JCP维护的规范包括J2ME、J2SE、J2EE，XML，OSS，JAIN等。组织成员可以提交JSR（Java Specification Requests），通过特定程序以后，进入到下一版本的规范里面。</p>
-<p>JSR:Java Specification Requests<br>Java 规范提案。是指向JCP(Java Community Process)提出新增一个标准化技术规范的正式请求。任何人都可以提交JSR，以向Java平台增添新的API和服务。JSR已成为Java界的一个重要标准。<br>即为一个规范代号：JSR311，JSR303等<br>完整JSR列表请查看<a href="https://www.jcp.org/en/jsr/all" target="_blank" rel="external">JCP官网</a></p>
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
+<p>JAX-RS: Java API for RESTful Web Services是一个Java编程语言的应用程序接口,支持按照 表象化状态转变 (REST)架构风格创建Web服务. JAX-RS使用了Java SE 5引入的Java 标注来简化Web服务客户端和服务端的开发和部署。</p>
+<h3 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h3><hr>
+<h4 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h4><h5 id="JCP-Java-Community-Process"><a href="#JCP-Java-Community-Process" class="headerlink" title="JCP:Java Community Process"></a>JCP:Java Community Process</h5><blockquote>
+<p>一个开放的国际组织，主要由Java开发者以及被授权者组成，职能是发展和更新。<br>Java技术和JCP两者的原创者都是SUN计算机公司。然而，JCP已经由SUN于1995年创造Java的非正式过程，演进到如今有数百名来自世界各地Java代表成员一同监督Java发展的正式程序。<br>JCP维护的规范包括J2ME、J2SE、J2EE，XML，OSS，JAIN等。组织成员可以提交JSR（Java Specification Requests），通过特定程序以后，进入到下一版本的规范里面。</p>
 </blockquote>
-</li>
-<li><p>版本<br>JSR311: JAX-RS 1.0<br>JSR399: JAX-RS 2.0</p>
-</li>
-</ul>
-<h3 id="JAX-RS对应实现"><a href="#JAX-RS对应实现" class="headerlink" title="JAX_RS对应实现"></a>JAX_RS对应实现</h3><ul>
+<h5 id="JSR-Java-Specification-Requests"><a href="#JSR-Java-Specification-Requests" class="headerlink" title="JSR:Java Specification Requests"></a>JSR:Java Specification Requests</h5><blockquote>
+<p>Java 规范提案。是指向JCP(Java Community Process)提出新增一个标准化技术规范的正式请求。任何人都可以提交JSR，以向Java平台增添新的API和服务。JSR已成为Java界的一个重要标准。<br>即为一个规范代号：JSR311，JSR303等<br>完整JSR列表请查看<a href="https://www.jcp.org/en/jsr/all" target="_blank" rel="external">JCP官网</a></p>
+</blockquote>
+<h4 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h4><p>JSR311: 即代号为311的规范请求，对应JAX-RS规范，版本为 1.0<br>JSR399: 即代号为399的规范请求，对应JAX-RS规范，版本为 2.0</p>
+<h3 id="JAX-RS对应实现"><a href="#JAX-RS对应实现" class="headerlink" title="JAX-RS对应实现"></a>JAX-RS对应实现</h3><hr>
+<h4 id="何为实现"><a href="#何为实现" class="headerlink" title="何为实现"></a>何为实现</h4><p>对于规范的实现，可以理解为面向对象语言中实现接口的概念。接口定义的即是一种规范、一种约束，由具体的模块来去完整的诠释这种规范，此为实现。  </p>
+<p>下面是不同组织用来诠释JAX-RS规范的不同产品：</p>
+<ul>
 <li>Apache CXF，开源的Web服务框架。</li>
 <li>Jersey， 由Sun提供的JAX-RS的参考实现。</li>
 <li>RESTEasy，JBoss的实现。</li>
@@ -823,11 +825,12 @@
 </ul>
 <p>这里讨论Jersey和RESTEasy：<br>Jersey1.x：JAX-RS 1.0<br>Jersey2.x：JAX-RS 2.0</p>
 <p>RESTEasy1.x/2.x：JAX-RS 1.0<br>RESTEasy3.x：JAX-RS 2.0</p>
-<h3 id="Jar包区别"><a href="#Jar包区别" class="headerlink" title="Jar包区别"></a>Jar包区别</h3><ul>
+<h3 id="Jar包区别"><a href="#Jar包区别" class="headerlink" title="Jar包区别"></a>Jar包区别</h3><p>在JAX-RS规范的具体应用中,经常会遇见jsr311-api.jar,jsr311-api.jar,jaxrs-api.jar,jersey-core这几种包，下面对这些包的区别做了描述：</p>
+<ul>
 <li>jsr311-api：JAX-RS 1.0 的官方规范包</li>
 <li>javax.ws.rs-api：JAX-RS 2.0 的官方规范包  </li>
 </ul>
-<p>以上为官方标准规范包，其中包含对应的注解和一些辅助类</p>
+<p>（以上为官方标准规范包，其中包含对应的注解和一些辅助类）</p>
 <ul>
 <li>jaxrs-api：RESTEasy规范包，其中包含对应版本JAX-RS规范的内容以及自定义的异常和接口</li>
 <li>jersey-core：Jersey规范包，包含对应版本JAX-RS规范的内容以及部分实现，余下实现在jersey的其他包中</li>
@@ -944,7 +947,8 @@
       
         
           
-            <h3 id="version-3-0-7-Final"><a href="#version-3-0-7-Final" class="headerlink" title="version:3.0.7.Final"></a>version:3.0.7.Final</h3><table>
+            <h2 id="RESTEasy简介"><a href="#RESTEasy简介" class="headerlink" title="RESTEasy简介"></a>RESTEasy简介</h2><p>接上一篇<a href="https://eternityrain.github.io/2016/09/27/JAX-RS%E8%A7%84%E8%8C%83/" target="_blank" rel="external">《JAX-RS规范的版本.实现.jar对应关系》</a>，我们知道RESTEasy是JAX-RS</p>
+<h3 id="version-3-0-7-Final"><a href="#version-3-0-7-Final" class="headerlink" title="version:3.0.7.Final"></a>version:3.0.7.Final</h3><table>
 <thead>
 <tr>
 <th>注解</th>
