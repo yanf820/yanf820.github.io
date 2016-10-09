@@ -102,7 +102,7 @@
     motion: true,
     duoshuo: {
       userId: 0,
-      author: 'Penulis'
+      author: 'Author'
     }
   };
 </script>
@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Beranda
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Arsip
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Diposting di</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T15:00:47+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -279,15 +279,19 @@
       
         
           
-            <h3 id="主流JSON库"><a href="#主流JSON库" class="headerlink" title="主流JSON库"></a>主流JSON库</h3><p>在解决json2java的问题时，一般使用四种主流的JSON库来进行json解析：</p>
+            <p>#Json schema规范写法</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。<br>Jsonschema2pojo即是一种json转换java的工具</p>
+<h3 id="主流JSON库"><a href="#主流JSON库" class="headerlink" title="主流JSON库"></a>主流JSON库</h3><p>在解决json2java的问题时，一般使用四种主流的JSON库来进行json解析：</p>
 <ul>
 <li>JSON.simple</li>
 <li>GSON</li>
 <li>Jackson</li>
 <li>JSONP</li>
 </ul>
-<h3 id="Jsonschema2pojo"><a href="#Jsonschema2pojo" class="headerlink" title="Jsonschema2pojo"></a>Jsonschema2pojo</h3><p>将JsonSchema翻译为pojo的工具 其底层使用的json2java工具即为Jackson 2.x Jsonschema2pojo定义了json schema的规范和书写方式</p>
-<h3 id="Json-Schema-feature-support"><a href="#Json-Schema-feature-support" class="headerlink" title="Json Schema feature support"></a>Json Schema feature support</h3><table>
+<h3 id="Jsonschema2pojo"><a href="#Jsonschema2pojo" class="headerlink" title="Jsonschema2pojo"></a>Jsonschema2pojo</h3><p>其底层使用的json2java工具即为Jackson 2.x，Jsonschema2pojo基于Jackson 2.x提供的java注解与规范对json数据进行解析，相应的，json数据也就需要有它本身一定的写法规范，Jsonschema2pojo定义了json schema的规范和书写方式</p>
+<h2 id="Json-Schema-feature-support"><a href="#Json-Schema-feature-support" class="headerlink" title="Json Schema feature support"></a>Json Schema feature support</h2><p>这里，我就<strong>常用的以及一些扩展的</strong>书写规范向大家一一说明，也提供了一些例子供参考。  </p>
+<p>下表为<strong>json schema书写过程中固定的一些rule</strong>，请先简单阅读：</p>
+<table>
 <thead>
 <tr>
 <th>JSON Schema rule</th>
@@ -460,20 +464,10 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li><p>properties</p>
-<p>schema:</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">      &quot;type&quot; : &quot;object&quot;,</div><div class="line">      &quot;properties&quot; : &#123;</div><div class="line">          &quot;foo&quot; : &#123;</div><div class="line">              &quot;type&quot; : &quot;string&quot;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p> java:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class MyObject &#123;</div><div class="line">        private String foo;</div><div class="line">        public String getFoo() &#123;</div><div class="line">           return foo;</div><div class="line">        &#125;</div><div class="line">        public void setFoo(String foo) &#123;</div><div class="line">           this.foo = foo;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p> properties中指定了schema对象的参数</p>
-<ul>
-<li><p>type</p>
-<p>指定所定义的有类型概念的数据类型</p>
-</li>
-</ul>
+<h3 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h3><h4 id="schema"><a href="#schema" class="headerlink" title="schema:"></a>schema:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">      &quot;type&quot; : &quot;object&quot;,</div><div class="line">      &quot;properties&quot; : &#123;</div><div class="line">          &quot;foo&quot; : &#123;</div><div class="line">              &quot;type&quot; : &quot;string&quot;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h4 id="java"><a href="#java" class="headerlink" title="java:"></a>java:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class MyObject &#123;</div><div class="line">        private String foo;</div><div class="line">        public String getFoo() &#123;</div><div class="line">           return foo;</div><div class="line">        &#125;</div><div class="line">        public void setFoo(String foo) &#123;</div><div class="line">           this.foo = foo;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p> properties用于指定schema的参数，转换为pojo后，properties中的属性foo会转换为java对象的属性foo，”type”用来指定对象或属性的类型</p>
+<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p> 指定所定义的有类型概念的数据类型，下表为json schema中type声明类型与pojo中声明类型间的对应关系：</p>
 <table>
 <thead>
 <tr>
@@ -520,7 +514,7 @@
 </tr>
 <tr>
 <td>null</td>
-<td>java.lang.Object`</td>
+<td>java.lang.Object</td>
 <td></td>
 </tr>
 <tr>
@@ -529,44 +523,22 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li><p>additionalProperties</p>
-<p>schema</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">     &quot;type&quot; : &quot;object&quot;,</div><div class="line">     &quot;additionalProperties&quot; : &#123;&#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p> java</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    public class MyObject &#123;</div><div class="line"></div><div class="line">    private java.util.Map&lt;String, Object&gt; additionalProperties = new java.util.HashMap&lt;String, Object&gt;();</div><div class="line"></div><div class="line">    @org.codehaus.jackson.annotate.JsonAnyGetter</div><div class="line">    public java.util.Map&lt;String, Object&gt; getAdditionalProperties() &#123;</div><div class="line">        return this.additionalProperties;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @org.codehaus.jackson.annotate.JsonAnySetter</div><div class="line">    public void setAdditionalProperties(String name, Object value) &#123;</div><div class="line">        this.additionalProperties.put(name, value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p> additionalProperties为true，会生成Map作为传入参数中附加参数的接受器，false则不生成，写成“{}”等同于true。 你也可以通过指定additionalProperties的数据类型来约束生成的结果 schema：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;type&quot; : &quot;object&quot;,</div><div class="line">        &quot;additionalProperties&quot; : &#123;</div><div class="line">            &quot;type&quot; : &quot;number&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p> java</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    public class MyObject &#123;</div><div class="line"></div><div class="line">    private java.util.Map&lt;String, Double&gt; additionalProperties = new java.util.HashMap&lt;String, Double&gt;();</div><div class="line"></div><div class="line">    @org.codehaus.jackson.annotate.JsonAnyGetter</div><div class="line">    public java.util.Map&lt;String, Double&gt; getAdditionalProperties() &#123;</div><div class="line">        return this.additionalProperties;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @org.codehaus.jackson.annotate.JsonAnySetter</div><div class="line">    public void setAdditionalProperties(String name, Double value) &#123;</div><div class="line">        this.additionalProperties.put(name, value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p> 上面将additionalProperties的类型改为Double 如果将type指定为object（我的json文件名为source.json）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;type&quot; : &quot;object&quot;,</div><div class="line">        &quot;additionalProperties&quot; : &#123;</div><div class="line">            &quot;type&quot; : &quot;object&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p> java</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Source&#123;</div><div class="line"></div><div class="line">       private java.util.Map&lt;String, SourceProperty&gt; additionalProperties = new java.util.HashMap&lt;String, SourceProperty&gt;();</div><div class="line"></div><div class="line">       @org.codehaus.jackson.annotate.JsonAnyGetter</div><div class="line">       public java.util.Map&lt;String, SourceProperty&gt; getAdditionalProperties() &#123;</div><div class="line">           return this.additionalProperties;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       @org.codehaus.jackson.annotate.JsonAnySetter</div><div class="line">       public void setAdditionalProperties(String name, SourceProperty value) &#123;</div><div class="line">           this.additionalProperties.put(name, value);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="additionalProperties"><a href="#additionalProperties" class="headerlink" title="additionalProperties"></a>additionalProperties</h3><h4 id="schema-1"><a href="#schema-1" class="headerlink" title="schema"></a>schema</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">     &quot;type&quot; : &quot;object&quot;,</div><div class="line">     &quot;additionalProperties&quot; : &#123;&#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h4 id="java-1"><a href="#java-1" class="headerlink" title="java"></a>java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    public class MyObject &#123;</div><div class="line"></div><div class="line">    private java.util.Map&lt;String, Object&gt; additionalProperties = new java.util.HashMap&lt;String, Object&gt;();</div><div class="line"></div><div class="line">    @org.codehaus.jackson.annotate.JsonAnyGetter</div><div class="line">    public java.util.Map&lt;String, Object&gt; getAdditionalProperties() &#123;</div><div class="line">        return this.additionalProperties;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @org.codehaus.jackson.annotate.JsonAnySetter</div><div class="line">    public void setAdditionalProperties(String name, Object value) &#123;</div><div class="line">        this.additionalProperties.put(name, value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> additionalProperties为true，会生成Map作为传入参数中附加参数的接受器，false则不生成，写成“{}”等同于true。 你也可以通过指定additionalProperties的数据类型来约束生成的结果。 </p>
+<h4 id="schema："><a href="#schema：" class="headerlink" title="schema："></a>schema：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;type&quot; : &quot;object&quot;,</div><div class="line">        &quot;additionalProperties&quot; : &#123;</div><div class="line">            &quot;type&quot; : &quot;number&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4 id="java-2"><a href="#java-2" class="headerlink" title="java"></a>java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    public class MyObject &#123;</div><div class="line"></div><div class="line">    private java.util.Map&lt;String, Double&gt; additionalProperties = new java.util.HashMap&lt;String, Double&gt;();</div><div class="line"></div><div class="line">    @org.codehaus.jackson.annotate.JsonAnyGetter</div><div class="line">    public java.util.Map&lt;String, Double&gt; getAdditionalProperties() &#123;</div><div class="line">        return this.additionalProperties;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @org.codehaus.jackson.annotate.JsonAnySetter</div><div class="line">    public void setAdditionalProperties(String name, Double value) &#123;</div><div class="line">        this.additionalProperties.put(name, value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 上面将additionalProperties的类型改为Double，pojo中属性的泛型就会变为<code>&lt;String, Double&gt;</code> 如果将type指定为object（我的json文件名为source.json）</p>
+<h4 id="schema-2"><a href="#schema-2" class="headerlink" title="schema"></a>schema</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;type&quot; : &quot;object&quot;,</div><div class="line">        &quot;additionalProperties&quot; : &#123;</div><div class="line">            &quot;type&quot; : &quot;object&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4 id="java-3"><a href="#java-3" class="headerlink" title="java"></a>java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Source&#123;</div><div class="line"></div><div class="line">       private java.util.Map&lt;String, SourceProperty&gt; additionalProperties = new java.util.HashMap&lt;String, SourceProperty&gt;();</div><div class="line"></div><div class="line">       @org.codehaus.jackson.annotate.JsonAnyGetter</div><div class="line">       public java.util.Map&lt;String, SourceProperty&gt; getAdditionalProperties() &#123;</div><div class="line">           return this.additionalProperties;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       @org.codehaus.jackson.annotate.JsonAnySetter</div><div class="line">       public void setAdditionalProperties(String name, SourceProperty value) &#123;</div><div class="line">           this.additionalProperties.put(name, value);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <p> 如上，会生成一个以主文件名为前缀，Property为后缀的类（SourceProperty）作为additionalProperties的value类型，该类中则有：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</div></pre></td></tr></table></figure>
-<ul>
-<li><p>array</p>
-<p>schema：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;type&quot; : &quot;object&quot;,</div><div class="line">        &quot;properties&quot; : &#123;</div><div class="line">            &quot;myArrayProperty&quot; : &#123;</div><div class="line">                &quot;type&quot; : &quot;array&quot;,</div><div class="line">                &quot;items&quot; : &#123;</div><div class="line">                    &quot;type&quot; : &quot;string&quot;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p> array写法如上即会生成Array《string》类型的参数myArrayProperty，如果在myArrayProperty指定“uniqueItems”:true，生成的集合则为Set&lt;&gt;. 对于items，可以$ref引用其他jsonschema文件，也可以直接在其下编写jsonschema，会生成一个以集合参数为名称（MyArrayProperty）的对象作为该集合的泛型</p>
-<ul>
-<li><p>enum</p>
-<p>schema:</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">       &quot;type&quot; : &quot;object&quot;,</div><div class="line">       &quot;properties&quot; : &#123;</div><div class="line">           &quot;myEnum&quot; : &#123;</div><div class="line">               &quot;type&quot; : &quot;string&quot;,</div><div class="line">               &quot;enum&quot; : [&quot;one&quot;, &quot;secondOne&quot;, &quot;3rd one&quot;]</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p> java:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@Generated(&quot;com.googlecode.jsonschema2pojo&quot;)</div><div class="line">   public static enum MyEnum &#123;</div><div class="line"></div><div class="line">   ONE(&quot;one&quot;),</div><div class="line">   SECOND_ONE(&quot;secondOne&quot;),</div><div class="line">   _3_RD_ONE(&quot;3rd one&quot;);</div><div class="line">   private final String value;</div><div class="line"></div><div class="line">   private MyEnum(String value) &#123;</div><div class="line">       this.value = value;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   @JsonValue</div><div class="line">   @Override</div><div class="line">   public String toString() &#123;</div><div class="line">       return this.value;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   @JsonCreator</div><div class="line">   public static MyObject.MyEnum fromValue(String value) &#123;</div><div class="line">       for (MyObject.MyEnum c: MyObject.MyEnum.values()) &#123;</div><div class="line">           if (c.value.equals(value)) &#123;</div><div class="line">               return c;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       throw new IllegalArgumentException(value);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>format</p>
-<p>可以给属性指定format规则，它会影响你的参数类型，和type对比，format的优先级更高，format的规则列表如下：</p>
-</li>
-</ul>
+<h4 id="java-4"><a href="#java-4" class="headerlink" title="java"></a>java</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;String, Object&gt;();</div></pre></td></tr></table></figure>
+<h3 id="array"><a href="#array" class="headerlink" title="array"></a>array</h3><h4 id="schema：-1"><a href="#schema：-1" class="headerlink" title="schema："></a>schema：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;type&quot; : &quot;object&quot;,</div><div class="line">        &quot;properties&quot; : &#123;</div><div class="line">            &quot;myArrayProperty&quot; : &#123;</div><div class="line">                &quot;type&quot; : &quot;array&quot;,</div><div class="line">                &quot;items&quot; : &#123;</div><div class="line">                    &quot;type&quot; : &quot;string&quot;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p> array写法如上即会生成<code>Array&lt;string&gt;</code>类型的参数myArrayProperty，如果在myArrayProperty指定“uniqueItems”:true，生成的集合则为Set&lt;&gt;. 对于items，可以$ref(后面介绍)引用其他jsonschema文件，也可以直接在其下编写jsonschema，会生成一个以集合参数为名称（MyArrayProperty）的对象作为该集合的泛型</p>
+<h3 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h3><h4 id="schema-3"><a href="#schema-3" class="headerlink" title="schema:"></a>schema:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">       &quot;type&quot; : &quot;object&quot;,</div><div class="line">       &quot;properties&quot; : &#123;</div><div class="line">           &quot;myEnum&quot; : &#123;</div><div class="line">               &quot;type&quot; : &quot;string&quot;,</div><div class="line">               &quot;enum&quot; : [&quot;one&quot;, &quot;secondOne&quot;, &quot;3rd one&quot;]</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h4 id="java-5"><a href="#java-5" class="headerlink" title="java:"></a>java:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@Generated(&quot;com.googlecode.jsonschema2pojo&quot;)</div><div class="line">   public static enum MyEnum &#123;</div><div class="line"></div><div class="line">   ONE(&quot;one&quot;),</div><div class="line">   SECOND_ONE(&quot;secondOne&quot;),</div><div class="line">   _3_RD_ONE(&quot;3rd one&quot;);</div><div class="line">   private final String value;</div><div class="line"></div><div class="line">   private MyEnum(String value) &#123;</div><div class="line">       this.value = value;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   @JsonValue</div><div class="line">   @Override</div><div class="line">   public String toString() &#123;</div><div class="line">       return this.value;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   @JsonCreator</div><div class="line">   public static MyObject.MyEnum fromValue(String value) &#123;</div><div class="line">       for (MyObject.MyEnum c: MyObject.MyEnum.values()) &#123;</div><div class="line">           if (c.value.equals(value)) &#123;</div><div class="line">               return c;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       throw new IllegalArgumentException(value);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>enum作为枚举写法经常被使用，比较简单，不详细介绍</p>
+<h3 id="format"><a href="#format" class="headerlink" title="format"></a>format</h3><p> 可以给属性指定format规则，它会影响你的参数类型，和type对比，format的优先级更高，format的规则列表如下：</p>
 <table>
 <thead>
 <tr>
@@ -637,21 +609,14 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li><p>extends</p>
-<p>extends属性声明在schema层表明继承</p>
-<p>flower.json：</p>
-</li>
-</ul>
+<h3 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h3><p> extends属性声明在schema层表明继承</p>
+<p> flower.json：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;type&quot; : &quot;object&quot;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p> rose.json</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;type&quot; : &quot;object&quot;,</div><div class="line">        &quot;extends&quot; : &#123;</div><div class="line">            &quot;$ref&quot; : &quot;flower.json&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p> Rose.java：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public class Rose extends Flower &#123;</div><div class="line">        ....</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>$ref</li>
-</ul>
-<h4 id="Supported-protocols"><a href="#Supported-protocols" class="headerlink" title="Supported protocols"></a>Supported protocols</h4><blockquote>
+<h3 id="ref"><a href="#ref" class="headerlink" title="$ref"></a>$ref</h3><h4 id="Supported-protocols"><a href="#Supported-protocols" class="headerlink" title="Supported protocols"></a>Supported protocols</h4><blockquote>
 <ul>
 <li>http://, https://</li>
 <li>file://</li>
@@ -661,32 +626,20 @@
 <h4 id="ref同样支持内部类型的引用"><a href="#ref同样支持内部类型的引用" class="headerlink" title="$ref同样支持内部类型的引用"></a>$ref同样支持内部类型的引用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;type&quot; : &quot;object&quot;,</div><div class="line">        &quot;properties&quot; : &#123;</div><div class="line">            &quot;child1&quot; : &#123;</div><div class="line">                &quot;type&quot; : &quot;string&quot;</div><div class="line">            &#125;,</div><div class="line">            &quot;child2&quot; : &#123;</div><div class="line">               &quot;$ref&quot; : &quot;#/properties/child1&quot;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p> 上面这种child2引用了child1的属性</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">       &quot;description&quot; : &quot;Tree node&quot;,</div><div class="line">       &quot;type&quot; : &quot;object&quot;,</div><div class="line">       &quot;properties&quot; : &#123;</div><div class="line">          &quot;children&quot; : &#123;</div><div class="line">             &quot;type&quot; : &quot;array&quot;,</div><div class="line">             &quot;items&quot; : &#123;</div><div class="line">                 &quot;$ref&quot; : &quot;#&quot;</div><div class="line">             &#125;</div><div class="line">          &#125;</div><div class="line">       &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p> 这种是集合类型泛型为本schema类型，类似于tree结构 也可以直接定位到集合的items属性作为类型</p>
-<ul>
-<li><p>javaType</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;javaType&quot; : &quot;com.other.package.CustomTypeName&quot;,</div><div class="line">        &quot;type&quot; : &quot;object&quot;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>如此生成会创建一个CustomTypeName类，并将属性类型指定为该类 如果不加”type” : “object”，则不会生成对应类，但是属性类型依然为该类名，报错而已 当然，你也可以直接指定已有的封装类</p>
-</li>
-<li><p>javaEnumNames</p>
-<p>schema:</p>
-</li>
-</ul>
+<p> 这种写法将shema类型作为集合类型泛型的引用，类似于tree结构 也可以直接定位到集合的items属性作为类型（#/properties/children/items）</p>
+<h3 id="javaType"><a href="#javaType" class="headerlink" title="javaType"></a>javaType</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        &quot;javaType&quot; : &quot;com.other.package.CustomTypeName&quot;,</div><div class="line">        &quot;type&quot; : &quot;object&quot;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</code></pre><p> javaType允许指定属性类型或类名称为java类（已存在或不存在的），如此生成会创建一个CustomTypeName类，并将属性类型指定为该类 如果不加”type” : “object”，则不会生成对应类，但是属性类型依然为该类名，报错而已 当然，你也可以直接指定已有的封装类</p>
+<h3 id="javaEnumNames"><a href="#javaEnumNames" class="headerlink" title="javaEnumNames"></a>javaEnumNames</h3><p> schema:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;type&quot; : &quot;object&quot;,</div><div class="line">    &quot;properties&quot; : &#123;</div><div class="line">        &quot;foo&quot; : &#123;</div><div class="line">            &quot;type&quot; : &quot;string&quot;,</div><div class="line">            &quot;enum&quot; : [&quot;H&quot;,&quot;L&quot;],</div><div class="line">            &quot;javaEnumNames&quot; : [&quot;HIGH&quot;,&quot;LOW&quot;]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> java:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public enum Foo &#123;</div><div class="line">    HIGH(&quot;H&quot;),</div><div class="line">    LOW(&quot;L&quot;)</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>javaInterfaces</p>
-<p>schema:</p>
-</li>
-</ul>
+<p>javaEnumNames是对于enum的扩展，可以指定java中的enum列表具体名称</p>
+<h3 id="javaInterfaces"><a href="#javaInterfaces" class="headerlink" title="javaInterfaces"></a>javaInterfaces</h3><p> schema:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;javaInterfaces&quot; : [&quot;java.io.Serializable&quot;, &quot;Cloneable&quot;],</div><div class="line">    &quot;type&quot; : &quot;object&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> java:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public class FooBar implements Serializable, Cloneable</div><div class="line">&#123;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>javaName</p>
-<p>该属性用于指定类或属性的生成名称</p>
-</li>
-</ul>
+<p>这个好理解，声明接口</p>
+<h3 id="javaName"><a href="#javaName" class="headerlink" title="javaName"></a>javaName</h3><p> 该属性用于指定类或属性的生成名称</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;type&quot;: &quot;object&quot;,</div><div class="line">  &quot;properties&quot;: &#123;</div><div class="line">    &quot;a&quot;: &#123;</div><div class="line">      &quot;javaName&quot;: &quot;b&quot;,</div><div class="line">      &quot;type&quot;: &quot;string&quot;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> java:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class MyClass &#123;</div><div class="line">   @JsonProperty(&quot;a&quot;)</div><div class="line">   private String b;</div><div class="line"></div><div class="line">   @JsonProperty(&quot;a&quot;)</div><div class="line">   public String getB() &#123;</div><div class="line">       return b;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   @JsonProperty(&quot;a&quot;)</div><div class="line">   public void setB(String b) &#123;</div><div class="line">       this.b = b;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -753,7 +706,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Diposting di</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:46:09+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -765,7 +718,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">Di</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/JAX-RS/" itemprop="url" rel="index">
@@ -897,7 +850,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Diposting di</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:36:21+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -909,7 +862,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">Di</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/JAX-RS/" itemprop="url" rel="index">
@@ -947,8 +900,10 @@
       
         
           
-            <h2 id="RESTEasy简介"><a href="#RESTEasy简介" class="headerlink" title="RESTEasy简介"></a>RESTEasy简介</h2><p>接上一篇<a href="https://eternityrain.github.io/2016/09/27/JAX-RS%E8%A7%84%E8%8C%83/" target="_blank" rel="external">《JAX-RS规范的版本.实现.jar对应关系》</a>，我们知道RESTEasy是JAX-RS</p>
-<h3 id="version-3-0-7-Final"><a href="#version-3-0-7-Final" class="headerlink" title="version:3.0.7.Final"></a>version:3.0.7.Final</h3><table>
+            <h2 id="RESTEasy简介"><a href="#RESTEasy简介" class="headerlink" title="RESTEasy简介"></a>RESTEasy简介</h2><p>接上一篇<a href="https://eternityrain.github.io/2016/09/27/JAX-RS%E8%A7%84%E8%8C%83%E7%9A%84%E7%89%88%E6%9C%AC.%E5%AE%9E%E7%8E%B0.jar%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/" target="_blank" rel="external">《JAX-RS规范的版本.实现.jar对应关系》</a>，我们已经知道RESTEasy是JAX-RS规范的实现，本篇内容告诉我们该怎样去使用它。</p>
+<h3 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h3><p>RESTEasy以jaxrs-api.jar包为基础对JAX-RS进行实现，该包中包含了JAX-RS规范所声明的注解。  </p>
+<h4 id="注解列表"><a href="#注解列表" class="headerlink" title="注解列表"></a>注解列表</h4><p>这里我们根据<strong>3.0.7.Final</strong>这一版本对一些常用注解进行说明，以下是注解列表，请进行参考阅读：</p>
+<table>
 <thead>
 <tr>
 <th>注解</th>
@@ -1054,11 +1009,12 @@
 </tbody>
 </table>
 <hr>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><h4 id="ApplicationPath"><a href="#ApplicationPath" class="headerlink" title="@ApplicationPath"></a>@ApplicationPath</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    @ApplicationPath(&quot;operations&quot;)</div><div class="line">    public class OperationApplication extends Application &#123;</div><div class="line"></div><div class="line">    private Set&lt;Object&gt; singletons=new HashSet&lt;Object&gt;();</div><div class="line"></div><div class="line">    public OperationApplication()&#123;</div><div class="line">        singletons.add(new Library());</div><div class="line">        singletons.add(new BookStoreImpl());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public Set&lt;Object&gt; getSingletons()&#123;</div><div class="line">        return singletons;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>重写Application的getSingletons()方法，在构造器中加载Library和BookStoreImpl两份资源，只有在此添加的资源才能被访问</p>
-<h4 id="Path-GET-PUT-DELETE-POST"><a href="#Path-GET-PUT-DELETE-POST" class="headerlink" title="@Path,@GET,@PUT,@DELETE,@POST"></a>@Path,@GET,@PUT,@DELETE,@POST</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@Path(&quot;/library&quot;)</div><div class="line">   public class Library &#123;</div><div class="line"></div><div class="line">       @GET</div><div class="line">       //@PUT,@POST,@DELETE</div><div class="line">       @Path(&quot;/books&quot;)</div><div class="line">       public String getBooks()&#123;</div><div class="line">           return &quot;book list&quot;;</div><div class="line">       &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>@Path是类与方法级别 @GET,@PUT,@DELETE,@POST为方法级别</p>
-<h4 id="PathParam-QueryParam"><a href="#PathParam-QueryParam" class="headerlink" title="@PathParam,@QueryParam"></a>@PathParam,@QueryParam</h4><p>···</p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><h5 id="ApplicationPath"><a href="#ApplicationPath" class="headerlink" title="@ApplicationPath"></a>@ApplicationPath</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    @ApplicationPath(&quot;operations&quot;)</div><div class="line">    public class OperationApplication extends Application &#123;</div><div class="line"></div><div class="line">    private Set&lt;Object&gt; singletons=new HashSet&lt;Object&gt;();</div><div class="line"></div><div class="line">    public OperationApplication()&#123;</div><div class="line">        singletons.add(new Library());</div><div class="line">        singletons.add(new BookStoreImpl());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public Set&lt;Object&gt; getSingletons()&#123;</div><div class="line">        return singletons;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在使用RESTEasy进行应用启动的时候，需要指明其请求根路径，这里既需要用到<code>@ApplicationPath</code>注解。<br>新建一个资源处理类OperationApplication继承Application，<br>标注类级别注解<code>@ApplicationPath</code>，用以声明根路径，<br>重写getSingletons()方法，用以获取资源容器<br>在构造器中加载Library和BookStoreImpl两份资源，只有在此添加的资源才能被访问</p>
+<h5 id="Path-GET-PUT-DELETE-POST"><a href="#Path-GET-PUT-DELETE-POST" class="headerlink" title="@Path,@GET,@PUT,@DELETE,@POST"></a>@Path,@GET,@PUT,@DELETE,@POST</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@Path(&quot;/library&quot;)</div><div class="line">   public class Library &#123;</div><div class="line"></div><div class="line">       @GET</div><div class="line">       //@PUT,@POST,@DELETE</div><div class="line">       @Path(&quot;/books&quot;)</div><div class="line">       public String getBooks()&#123;</div><div class="line">           return &quot;book list&quot;;</div><div class="line">       &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>@Path是类与方法级别<br>使用<code>@Path</code>注解标识访问路径，该路径基于<code>@ApplicationPath</code>提供的根路径  </p>
+<p>@GET,@PUT,@DELETE,@POST为方法级别<br>这四个注解是http rest注解，用在实际动作上</p>
+<h5 id="PathParam-QueryParam"><a href="#PathParam-QueryParam" class="headerlink" title="@PathParam,@QueryParam"></a>@PathParam,@QueryParam</h5><p>···</p>
 <pre><code>@PUT
 @Path(&quot;/book/{isbn}&quot;)
 public void addBook(@PathParam(&quot;isbn&quot;) String isbn, @QueryParam(&quot;name&quot;) String name){
@@ -1073,25 +1029,25 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
         System.out.println(&quot;the book with isbn : &quot;+isbn+&quot; has been removed&quot;);
     }
 </code></pre><p>···</p>
-<p>通过声明pathparam参数名可以更方便的获取路径参数</p>
+<p>通过声明<code>@Pathparam</code>参数名可以更方便的获取路径上的参数，<br>路径参数可以直接声明，也可以声明后通过正则进行约束，如<code>@Path(&quot;/book/{var: .*}/{isbn}&quot;)</code>，这里声明了var和isbn两个路径参数，var参数会捕获输入路径中满足冒号后正则的部分作为value</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@POST</div><div class="line">@Path(&quot;/book&#123;multi&#125;&quot;)</div><div class="line">public void postBook(@PathParam(&quot;multi&quot;) PathSegment multi)&#123;</div><div class="line">    MultivaluedMap&lt;String,String&gt; paramMap =multi.getMatrixParameters();</div><div class="line">    Set&lt;String&gt; set=paramMap.keySet();</div><div class="line"></div><div class="line">    for (String key:set)&#123;</div><div class="line">        System.out.println(key+&quot; : &quot;+paramMap.get(key));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>上一片段对应的请求为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">POST http://localhost:8080/operations/library/book==;name=EJB 3.0;title=Bill Burke</div></pre></td></tr></table></figure>
-<p>通过PathSegment类的使用可以将路径参数进行map映射</p>
-<h4 id="MatrixParam"><a href="#MatrixParam" class="headerlink" title="@MatrixParam"></a>@MatrixParam</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@PUT</div><div class="line">@Path(&quot;/books&quot;)</div><div class="line">public void updateBook(@MatrixParam(&quot;name&quot;) String name,@MatrixParam(&quot;title&quot;) String title)&#123;</div><div class="line">    System.out.println(&quot;name :&quot;+name+&quot; ,title :&quot;+title);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>使用@MatrixParam可以获取下面这种资源的请求参数：</p>
+<p>通过PathSegment类的使用可以将路径参数进行map映射，按照上面的请求写法，会将参数name和title进行键值映射</p>
+<h5 id="MatrixParam"><a href="#MatrixParam" class="headerlink" title="@MatrixParam"></a>@MatrixParam</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@PUT</div><div class="line">@Path(&quot;/books&quot;)</div><div class="line">public void updateBook(@MatrixParam(&quot;name&quot;) String name,@MatrixParam(&quot;title&quot;) String title)&#123;</div><div class="line">    System.out.println(&quot;name :&quot;+name+&quot; ,title :&quot;+title);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用@MatrixParam可以获取下面这种资源写法的请求参数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">GET http://host.com/library/book;name=EJB 3.0;author=Bill Burke</div></pre></td></tr></table></figure>
-<h4 id="FormParam-DefaultValue"><a href="#FormParam-DefaultValue" class="headerlink" title="@FormParam,@DefaultValue"></a>@FormParam,@DefaultValue</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@POST</div><div class="line">@Path(&quot;/books-form1&quot;)</div><div class="line">public void addBookByForm(@FormParam(&quot;name&quot;) @DefaultValue(&quot;yimmm&quot;) String name,@FormParam(&quot;title&quot;) String title)&#123;</div><div class="line">    System.out.println(&quot;name :&quot;+name+&quot; ,title :&quot;+title);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>作为form提交的参数@FormParam可以根据名称进行获取</p>
-<h4 id="Consumes"><a href="#Consumes" class="headerlink" title="@Consumes"></a>@Consumes</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@POST</div><div class="line">@Path(&quot;/books-form2&quot;)</div><div class="line">@Consumes(MediaType.APPLICATION_FORM_URLENCODED)</div><div class="line">public void addBookByForm(MultivaluedMap&lt;String,String&gt; form)&#123;</div><div class="line">    Set&lt;String&gt; set=form.keySet();</div><div class="line"></div><div class="line">    for (String key:set)&#123;</div><div class="line">        System.out.println(key+&quot; : &quot;+form.get(key));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>使用@Consumes进行请求类型的匹配，在进行form提交时，MultivaluedMap<string,string>可以一次性接收form的所有参数</string,string></p>
-<h4 id="Form"><a href="#Form" class="headerlink" title="@Form"></a>@Form</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@POST</div><div class="line">@Path(&quot;/books-form3&quot;)</div><div class="line">@Consumes(MediaType.APPLICATION_FORM_URLENCODED)</div><div class="line">public void addBookByForm(@Form Book book)&#123;</div><div class="line">    System.out.println(book.getAuthor());</div><div class="line">    System.out.println(book.getTitle());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>使用@Form可以将form参数直接映射为对象 但是该对象需要进行相关标注</p>
+<h5 id="FormParam-DefaultValue"><a href="#FormParam-DefaultValue" class="headerlink" title="@FormParam,@DefaultValue"></a>@FormParam,@DefaultValue</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@POST</div><div class="line">@Path(&quot;/books-form1&quot;)</div><div class="line">public void addBookByForm(@FormParam(&quot;name&quot;) @DefaultValue(&quot;yimmm&quot;) String name,@FormParam(&quot;title&quot;) String title)&#123;</div><div class="line">    System.out.println(&quot;name :&quot;+name+&quot; ,title :&quot;+title);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>作为form提交的参数<code>@FormParam</code>可以根据名称进行获取，<code>@DefaultValue</code>在未传入相应参数时可以赋予其默认值</p>
+<h5 id="Consumes"><a href="#Consumes" class="headerlink" title="@Consumes"></a>@Consumes</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@POST</div><div class="line">@Path(&quot;/books-form2&quot;)</div><div class="line">@Consumes(MediaType.APPLICATION_FORM_URLENCODED)</div><div class="line">public void addBookByForm(MultivaluedMap&lt;String,String&gt; form)&#123;</div><div class="line">    Set&lt;String&gt; set=form.keySet();</div><div class="line"></div><div class="line">    for (String key:set)&#123;</div><div class="line">        System.out.println(key+&quot; : &quot;+form.get(key));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>@Consumes</code>对请求参数格式进行约束<br>在进行form提交时，MultivaluedMap<string,string>可以一次性接收form的所有参数</string,string></p>
+<h5 id="Form"><a href="#Form" class="headerlink" title="@Form"></a>@Form</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@POST</div><div class="line">@Path(&quot;/books-form3&quot;)</div><div class="line">@Consumes(MediaType.APPLICATION_FORM_URLENCODED)</div><div class="line">public void addBookByForm(@Form Book book)&#123;</div><div class="line">    System.out.println(book.getAuthor());</div><div class="line">    System.out.println(book.getTitle());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用<code>@Form</code>可以将form参数直接映射为对象 但是该对象需要进行相关标注。<br>新建Book.java，用<code>@FormParam对其进行参数标注</code>，在资源中即可运用<code>@Form</code>在参数列表中对<code>Book book</code>进行标注，请求中的符合Book属性的参数会作为Book实例的属性被接收</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Book &#123;</div><div class="line">   @FormParam(&quot;author&quot;)</div><div class="line">   private String author;</div><div class="line"></div><div class="line">   @FormParam(&quot;title&quot;)</div><div class="line">   private String title;</div></pre></td></tr></table></figure>
-<h4 id="Context-Encoded"><a href="#Context-Encoded" class="headerlink" title="@Context,@Encoded"></a>@Context,@Encoded</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@GET</div><div class="line">@Path(&quot;encodeTest/&#123;name&#125;&quot;)</div><div class="line">public String testEncode(@Context javax.ws.rs.core.HttpHeaders headers,@PathParam(&quot;name&quot;) @Encoded String name)&#123;</div><div class="line"></div><div class="line">    return name;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>@Context将javax.ws.rs.core.HttpHeaders进行嵌入，@Encoded对当前的pathparam name进行urlencode</p>
-<h4 id="Produces"><a href="#Produces" class="headerlink" title="@Produces"></a>@Produces</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@GET</div><div class="line">@Path(&quot;/books&quot;)</div><div class="line">@Produces(&#123;MediaType.APPLICATION_JSON,MediaType.TEXT_PLAIN&#125;)</div><div class="line">public String getBooks()&#123;</div><div class="line">    return &quot;book list&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>@Produces与@Consumes用法相同，只不过是进行返回类型的匹配，它们的参数为字符串数组</p>
+<h5 id="Context-Encoded"><a href="#Context-Encoded" class="headerlink" title="@Context,@Encoded"></a>@Context,@Encoded</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@GET</div><div class="line">@Path(&quot;encodeTest/&#123;name&#125;&quot;)</div><div class="line">public String testEncode(@Context javax.ws.rs.core.HttpHeaders headers,@PathParam(&quot;name&quot;) @Encoded String name)&#123;</div><div class="line"></div><div class="line">    return name;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>@Context在参数列表注入系统级别参数，如上，将javax.ws.rs.core.HttpHeaders进行嵌入。<br>@Encoded对当前的pathparam name进行urlencode，接收后的name参数是encode后的字符串</p>
+<h5 id="Produces"><a href="#Produces" class="headerlink" title="@Produces"></a>@Produces</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@GET</div><div class="line">@Path(&quot;/books&quot;)</div><div class="line">@Produces(&#123;MediaType.APPLICATION_JSON,MediaType.TEXT_PLAIN&#125;)</div><div class="line">public String getBooks()&#123;</div><div class="line">    return &quot;book list&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>@Produces与@Consumes用法相同，只不过是进行返回数据格式的匹配，它们的参数为字符串数组</p>
 <hr>
 <p><strong>注：暂且说到这里，后续补充</strong></p>
 
@@ -1164,7 +1120,7 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">posting</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1172,7 +1128,7 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">kategori</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -1181,7 +1137,7 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1225,11 +1181,11 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Tema -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
