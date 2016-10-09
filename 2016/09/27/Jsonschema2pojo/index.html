@@ -84,19 +84,25 @@
 
 
 
-<meta name="description" content="Json schema规范写法简介日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。Jsonschema2pojo即是一种json转换java的工具
-主流JSON库在解决json2java的问题时，一般使用四种主流的JSON库来进行">
+<meta name="description" content="简介日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。Jsonschema2pojo即是一种json转换java的工具
+主流JSON库在解决json2java的问题时，一般使用四种主流的JSON库来进行json解析：
+
+JSON.s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jsonschema2pojo">
+<meta property="og:title" content="Json schema规范写法">
 <meta property="og:url" content="http://yoursite.com/2016/09/27/Jsonschema2pojo/index.html">
 <meta property="og:site_name" content="Eternity Rain">
-<meta property="og:description" content="Json schema规范写法简介日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。Jsonschema2pojo即是一种json转换java的工具
-主流JSON库在解决json2java的问题时，一般使用四种主流的JSON库来进行">
-<meta property="og:updated_time" content="2016-10-09T08:59:51.917Z">
+<meta property="og:description" content="简介日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。Jsonschema2pojo即是一种json转换java的工具
+主流JSON库在解决json2java的问题时，一般使用四种主流的JSON库来进行json解析：
+
+JSON.s">
+<meta property="og:updated_time" content="2016-10-09T09:05:05.714Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jsonschema2pojo">
-<meta name="twitter:description" content="Json schema规范写法简介日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。Jsonschema2pojo即是一种json转换java的工具
-主流JSON库在解决json2java的问题时，一般使用四种主流的JSON库来进行">
+<meta name="twitter:title" content="Json schema规范写法">
+<meta name="twitter:description" content="简介日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。Jsonschema2pojo即是一种json转换java的工具
+主流JSON库在解决json2java的问题时，一般使用四种主流的JSON库来进行json解析：
+
+JSON.s">
 
 
 
@@ -119,7 +125,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/09/27/Jsonschema2pojo/"/>
 
-  <title> Jsonschema2pojo | Eternity Rain </title>
+  <title> Json schema规范写法 | Eternity Rain </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -177,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -187,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -239,7 +245,7 @@
             
             
               
-                Jsonschema2pojo
+                Json schema规范写法
               
             
           </h1>
@@ -250,7 +256,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-27T15:00:47+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -279,7 +285,7 @@
       
 
       
-        <h1 id="Json-schema规范写法"><a href="#Json-schema规范写法" class="headerlink" title="Json schema规范写法"></a>Json schema规范写法</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。<br>Jsonschema2pojo即是一种json转换java的工具</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。<br>Jsonschema2pojo即是一种json转换java的工具</p>
 <h3 id="主流JSON库"><a href="#主流JSON库" class="headerlink" title="主流JSON库"></a>主流JSON库</h3><p>在解决json2java的问题时，一般使用四种主流的JSON库来进行json解析：</p>
 <ul>
 <li>JSON.simple</li>
@@ -718,10 +724,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -738,7 +744,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -746,7 +752,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -755,7 +761,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -783,7 +789,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Json-schema规范写法"><span class="nav-number">1.</span> <span class="nav-text">Json schema规范写法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主流JSON库"><span class="nav-number">1.1.1.</span> <span class="nav-text">主流JSON库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jsonschema2pojo"><span class="nav-number">1.1.2.</span> <span class="nav-text">Jsonschema2pojo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Json-Schema-feature-support"><span class="nav-number">1.2.</span> <span class="nav-text">Json Schema feature support</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#properties"><span class="nav-number">1.2.1.</span> <span class="nav-text">properties</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">schema</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">java</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">1.2.2.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#additionalProperties"><span class="nav-number">1.2.3.</span> <span class="nav-text">additionalProperties</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema1"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">schema1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">java1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#schema2"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">schema2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java2"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">java2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#schema3"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">schema3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java3"><span class="nav-number">1.2.3.6.</span> <span class="nav-text">java3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java4"><span class="nav-number">1.2.3.7.</span> <span class="nav-text">java4</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array"><span class="nav-number">1.2.4.</span> <span class="nav-text">array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-1"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">schema</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enum"><span class="nav-number">1.2.5.</span> <span class="nav-text">enum</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-2"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">schema</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-1"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">java</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#format"><span class="nav-number">1.2.6.</span> <span class="nav-text">format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extends"><span class="nav-number">1.2.7.</span> <span class="nav-text">extends</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">1.2.8.</span> <span class="nav-text">$ref</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Supported-protocols"><span class="nav-number">1.2.8.1.</span> <span class="nav-text">Supported protocols</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ref同样支持内部类型的引用"><span class="nav-number">1.2.8.2.</span> <span class="nav-text">$ref同样支持内部类型的引用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javaType"><span class="nav-number">1.2.9.</span> <span class="nav-text">javaType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javaEnumNames"><span class="nav-number">1.2.10.</span> <span class="nav-text">javaEnumNames</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-3"><span class="nav-number">1.2.10.1.</span> <span class="nav-text">schema</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-2"><span class="nav-number">1.2.10.2.</span> <span class="nav-text">java</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javaInterfaces"><span class="nav-number">1.2.11.</span> <span class="nav-text">javaInterfaces</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-4"><span class="nav-number">1.2.11.1.</span> <span class="nav-text">schema</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-3"><span class="nav-number">1.2.11.2.</span> <span class="nav-text">java</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javaName"><span class="nav-number">1.2.12.</span> <span class="nav-text">javaName</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-5"><span class="nav-number">1.2.12.1.</span> <span class="nav-text">schema</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-4"><span class="nav-number">1.2.12.2.</span> <span class="nav-text">java</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主流JSON库"><span class="nav-number">1.1.</span> <span class="nav-text">主流JSON库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jsonschema2pojo"><span class="nav-number">1.2.</span> <span class="nav-text">Jsonschema2pojo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Json-Schema-feature-support"><span class="nav-number">2.</span> <span class="nav-text">Json Schema feature support</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#properties"><span class="nav-number">2.1.</span> <span class="nav-text">properties</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema"><span class="nav-number">2.1.1.</span> <span class="nav-text">schema</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-number">2.1.2.</span> <span class="nav-text">java</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">2.2.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#additionalProperties"><span class="nav-number">2.3.</span> <span class="nav-text">additionalProperties</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema1"><span class="nav-number">2.3.1.</span> <span class="nav-text">schema1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java1"><span class="nav-number">2.3.2.</span> <span class="nav-text">java1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#schema2"><span class="nav-number">2.3.3.</span> <span class="nav-text">schema2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java2"><span class="nav-number">2.3.4.</span> <span class="nav-text">java2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#schema3"><span class="nav-number">2.3.5.</span> <span class="nav-text">schema3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java3"><span class="nav-number">2.3.6.</span> <span class="nav-text">java3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java4"><span class="nav-number">2.3.7.</span> <span class="nav-text">java4</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array"><span class="nav-number">2.4.</span> <span class="nav-text">array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-1"><span class="nav-number">2.4.1.</span> <span class="nav-text">schema</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enum"><span class="nav-number">2.5.</span> <span class="nav-text">enum</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-2"><span class="nav-number">2.5.1.</span> <span class="nav-text">schema</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-1"><span class="nav-number">2.5.2.</span> <span class="nav-text">java</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#format"><span class="nav-number">2.6.</span> <span class="nav-text">format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extends"><span class="nav-number">2.7.</span> <span class="nav-text">extends</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">2.8.</span> <span class="nav-text">$ref</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Supported-protocols"><span class="nav-number">2.8.1.</span> <span class="nav-text">Supported protocols</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ref同样支持内部类型的引用"><span class="nav-number">2.8.2.</span> <span class="nav-text">$ref同样支持内部类型的引用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javaType"><span class="nav-number">2.9.</span> <span class="nav-text">javaType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javaEnumNames"><span class="nav-number">2.10.</span> <span class="nav-text">javaEnumNames</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-3"><span class="nav-number">2.10.1.</span> <span class="nav-text">schema</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-2"><span class="nav-number">2.10.2.</span> <span class="nav-text">java</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javaInterfaces"><span class="nav-number">2.11.</span> <span class="nav-text">javaInterfaces</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-4"><span class="nav-number">2.11.1.</span> <span class="nav-text">schema</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-3"><span class="nav-number">2.11.2.</span> <span class="nav-text">java</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javaName"><span class="nav-number">2.12.</span> <span class="nav-text">javaName</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-5"><span class="nav-number">2.12.1.</span> <span class="nav-text">schema</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-4"><span class="nav-number">2.12.2.</span> <span class="nav-text">java</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -810,7 +816,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
