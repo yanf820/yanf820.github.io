@@ -564,10 +564,8 @@ version: 1
           example: John
           required: true
           type: string
-</code></pre><p>##对开发者十分友好</p>
-<p>RAML的优点不仅在于简单的格式与丰富的工具，它还能够让开发者应用编码的最佳实践，例如模式与重用代码。这不仅能够极大地减少开发者的工作，还能够促使API在不同的资源与方法中保持统一性。虽然你总是能够抽象出一套schema，以保持规范的良好组织，或是通过“!include”命令引入schema、示例与其它RAML代码片段，但RAML还提供了两个额外的实用与独特的模板特性：即traits与resourceTypes  </p>
-<p>###通过traits定义通用属性</p>
-<p>RAML的traits特性允许你为方法（GET、PUT、POST、PATCH、DELETE等等）定义通用的属性（或traits），例如它们是否可过滤、可搜索或是可分页。</p>
+</code></pre><h2 id="对开发者十分友好"><a href="#对开发者十分友好" class="headerlink" title="对开发者十分友好"></a>对开发者十分友好</h2><p>RAML的优点不仅在于简单的格式与丰富的工具，它还能够让开发者应用编码的最佳实践，例如模式与重用代码。这不仅能够极大地减少开发者的工作，还能够促使API在不同的资源与方法中保持统一性。虽然你总是能够抽象出一套schema，以保持规范的良好组织，或是通过“!include”命令引入schema、示例与其它RAML代码片段，但RAML还提供了两个额外的实用与独特的模板特性：即traits与resourceTypes  </p>
+<h3 id="通过traits定义通用属性"><a href="#通过traits定义通用属性" class="headerlink" title="通过traits定义通用属性"></a>通过traits定义通用属性</h3><p>RAML的traits特性允许你为方法（GET、PUT、POST、PATCH、DELETE等等）定义通用的属性（或traits），例如它们是否可过滤、可搜索或是可分页。</p>
 <p>在创建trait时，你实际上是创建了一份模板，它能够通过接受参数为方法提供属性，只需几行代码就能够完成。同时为你所需的trait提供了最大程度的灵活性与自定义能力：  </p>
 <pre><code>traits:
 -searchable:
@@ -581,8 +579,7 @@ version: 1
 /people:
   get:
     is: [searchable: {description: &quot;search by name&quot;, example: &quot;[\&quot;firstName\&quot;\,\&quot;Michael\&quot;,\&quot;like\&quot;]&quot;}]  
-</code></pre><p>###通过ResourceTypes为资源定义模板</p>
-<p>此外，与traits相似，resourceTypes也允许你为资源本身创建模板，以此调用通用的方法与响应。打个比方，对于Collection这种资源类型来说，你可能会大量用到POST与GET方法，并且通常会返回200、201或400等状态码。只要将它定义为一种resourceType，你就能够通过两行代码就完成调用，而无需为你所创建的每种资源都加入相同的方法与状态码。</p>
+</code></pre><h3 id="通过ResourceTypes为资源定义模板"><a href="#通过ResourceTypes为资源定义模板" class="headerlink" title="通过ResourceTypes为资源定义模板"></a>通过ResourceTypes为资源定义模板</h3><p>此外，与traits相似，resourceTypes也允许你为资源本身创建模板，以此调用通用的方法与响应。打个比方，对于Collection这种资源类型来说，你可能会大量用到POST与GET方法，并且通常会返回200、201或400等状态码。只要将它定义为一种resourceType，你就能够通过两行代码就完成调用，而无需为你所创建的每种资源都加入相同的方法与状态码。</p>
 <pre><code>resourceTypes:
 - collection:
     description: Collection of available &lt;&lt;resourcePathName&gt;&gt;
@@ -608,7 +605,7 @@ version: 1
          &quot;company&quot; : &quot;MuleSoft&quot;,
         }
 </code></pre><p>你甚至可以在resourceTypes中定义可选的方法，只需为该方法加上一个问号（？）即可。这种可选方法只有在定义了该方法的资源中才会被引入，这就为你赋予了更大的灵活性。  </p>
-<p>###注：这里只介绍了一些基本用法，详细用法请参考<a href="https://github.com/raml-org/raml-spec/blob/master/raml-0.8.md" target="_blank" rel="external">官方语法介绍</a>###</p>
+<p>  <strong><em>注：这里只介绍了一些基本用法，详细用法请参考<a href="https://github.com/raml-org/raml-spec/blob/master/raml-0.8.md" target="_blank" rel="external">官方语法介绍</a></em></strong></p>
 
           
         
