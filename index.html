@@ -279,18 +279,49 @@
       
         
           
-            <h2 id="RAML可以做什么"><a href="#RAML可以做什么" class="headerlink" title="RAML可以做什么"></a>RAML可以做什么</h2><p> RAML定义出的文件可以通过MuleSoft提供的RAML for Jax-RS插件，生成基于JAX-RS协议的Java代码。同时Java代码也可以通过此插件生成相对应的RAML文件。</p>
-<h2 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h2><ul>
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>raml-for-jax-rs插件是mulesoft开发的，是实现被JAX-RS注解的java代码与Raml Api描述之间相互转换的工具。<br>其中包含jaxrs-to-raml和raml-to-jaxrs两个主要工程，分别实现一种转换过程。</p>
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="RAML生成JAX-RS"><a href="#RAML生成JAX-RS" class="headerlink" title="RAML生成JAX-RS"></a>RAML生成JAX-RS</h3><p>所有发行版本（Eclipse Plugin，Maven Plugin和Jar）的工作方式如下：</p>
+<ul>
+<li>生成接口，并在RAML定义改变的情况下重新生成接口</li>
+<li>一个接口被生成一个顶级resource，该接口下面的子接口称为sub-resouce被作为不同的方法定义在同一个接口下</li>
+<li>为每个资源操作创建响应对象包装器，以便指导实现者仅生成与RAML定义兼容的结果</li>
+<li>为不属于JAX-RS核心规范的http方法生成自定义注解（PATCH）</li>
+<li>对象基于代表 请求/响应 实体的json schemas来生成</li>
+<li>英语是接口和方法中常用的语言</li>
+</ul>
+<h4 id="当前支持"><a href="#当前支持" class="headerlink" title="当前支持"></a>当前支持</h4><ul>
+<li>JAX-RS 1.1 和 2.0</li>
+<li>除<code>@Pattern</code>外，JSR-303注解都支持，因为Raml用的是ECMA 262/Perl 5模式，而javax.validation用的是Java模式，<code>@Min/@Max</code>支持对raml中定义的非小数最大最小值的限制</li>
+<li>模型对象基于JSON schemas生成，带有Jackson1,2或者Gson注解</li>
+<li>基于XML Schemas生成带有JAXB注解的结果</li>
+</ul>
+<h4 id="JAX-RS注解"><a href="#JAX-RS注解" class="headerlink" title="JAX-RS注解"></a>JAX-RS注解</h4><ul>
+<li>Path</li>
+<li>Consumes, Produces.</li>
+<li>QueryParam, FormParam, PathParam, HeaderParam.</li>
+<li>DELETE, GET, HEAD, OPTIONS, POST, PUT.</li>
+<li>DefaultValue.</li>
+</ul>
+<h4 id="扩展注解"><a href="#扩展注解" class="headerlink" title="扩展注解"></a>扩展注解</h4><p>验证注解：  </p>
+<ul>
+<li>NotNull</li>
+<li>Min</li>
+<li>DecimalMin</li>
+<li>Max</li>
+<li>DecimalMax</li>
+</ul>
+<h2 id="支持方式"><a href="#支持方式" class="headerlink" title="支持方式"></a>支持方式</h2><p>该插件支持以下几种使用方式</p>
+<ul>
 <li>Maven 插件</li>
 <li>eclipse插件</li>
 <li>命令行</li>
 </ul>
-<h3 id="Maven插件"><a href="#Maven插件" class="headerlink" title="Maven插件"></a>Maven插件</h3><h4 id="RAML-to-JAX-RS"><a href="#RAML-to-JAX-RS" class="headerlink" title="RAML to JAX-RS"></a>RAML to JAX-RS</h4><hr>
-<p>这个Maven plug-in用来生成JAX-RS协议的接口，支持基于单一或多个RAML文件</p>
-<h5 id="Maven-组件"><a href="#Maven-组件" class="headerlink" title="Maven 组件"></a>Maven 组件</h5><p>Maven 组件仓库地址</p>
+<h3 id="Maven插件"><a href="#Maven插件" class="headerlink" title="Maven插件"></a>Maven插件</h3><p>这里我们着重对Raml to JAX-RS方式中Maven插件的使用进行介绍</p>
+<h4 id="RAML-to-JAX-RS"><a href="#RAML-to-JAX-RS" class="headerlink" title="RAML to JAX-RS"></a>RAML to JAX-RS</h4><p>这个Maven插件用来基于raml Api生成JAX-RS注释的java接口，支持基于单一或多个RAML文件</p>
+<h5 id="Maven-组件"><a href="#Maven-组件" class="headerlink" title="Maven 组件"></a>Maven 组件</h5><p>Maven 组件仓库地址  </p>
 <ul>
-<li><a href="https://repository-master.mulesoft.org/releases/" target="_blank" rel="external">https://repository-master.mulesoft.org/releases/</a> - release repository</li>
-<li><a href="https://repository-master.mulesoft.org/snapshots/" target="_blank" rel="external">https://repository-master.mulesoft.org/snapshots/</a> - snaphots repository</li>
+<li><a href="https://repository-master.mulesoft.org/releases/" target="_blank" rel="external">https://repository-master.mulesoft.org/releases/</a> - release repository  </li>
+<li><a href="https://repository-master.mulesoft.org/snapshots/" target="_blank" rel="external">https://repository-master.mulesoft.org/snapshots/</a> - snaphots repository  </li>
 </ul>
 <h5 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h5><p>需要在Project中的Pom文件中增加以下plug-in内容， 例如：</p>
 <pre><code>&lt;plugin&gt;
@@ -328,54 +359,54 @@
         &lt;phase&gt;generate-sources&lt;/phase&gt;
     &lt;/execution&gt;
 &lt;/executions&gt;
-</code></pre><p></p>
-<h5 id="配置中的Schema"><a href="#配置中的Schema" class="headerlink" title="配置中的Schema"></a>配置中的Schema</h5><table>
+&lt;/plugin&gt;
+</code></pre><h5 id="配置中的Schema"><a href="#配置中的Schema" class="headerlink" title="配置中的Schema"></a>配置中的Schema</h5><table>
 <thead>
 <tr>
 <th style="text-align:left">Schema</th>
-<th style="text-align:right">Default Value</th>
-<th style="text-align:center">Optional</th>
+<th>Default Value</th>
+<th>Optional</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">sourceDirectory</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
+<td>field2</td>
+<td>yes</td>
 </tr>
 <tr>
 <td style="text-align:left">basePackageName</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
+<td>field2</td>
+<td>yes</td>
 </tr>
 <tr>
 <td style="text-align:left">jaxrsVersion</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
+<td>field2</td>
+<td>yes</td>
 </tr>
 <tr>
 <td style="text-align:left">useJsr303Annotations</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
+<td>field2</td>
+<td>yes</td>
 </tr>
 <tr>
 <td style="text-align:left">jsonMapper</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
+<td>field2</td>
+<td>yes</td>
 </tr>
 <tr>
 <td style="text-align:left">extensions</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
+<td>field2</td>
+<td>yes</td>
 </tr>
 <tr>
 <td style="text-align:left">customAnnotator</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
+<td>field2</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
-<p>当你运行<code>mvn raml:generate</code>时，RAML定义的内容就会被处理生成相应的Java代码，同样如果你配置了相应的executions那么在运行<code>mvn compile</code> or <code>mvn package</code>这个插件也会执行。</p>
+<p>当你运行<code>mvn raml:generate</code>时，RAML定义的内容就会被处理生成相应的Java代码，同样在运行<code>mvn compile</code> 或者 <code>mvn package</code>命令时这个插件也会执行。</p>
 
           
         
