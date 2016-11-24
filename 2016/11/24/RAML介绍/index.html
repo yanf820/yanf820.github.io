@@ -93,7 +93,7 @@ Write once. Use many. Creative laziness encouragedRESTful API Modeling Language 
 <meta property="og:description" content="RAML是什么
 Write once. Use many. Creative laziness encouragedRESTful API Modeling Language (RAML) makes it easy to manage the whole API lifecycle from design to sharing. It’s concise - you only write wha">
 <meta property="og:image" content="http://cdn4.infoqstatic.com/statics_s1_20161122-0331/resource/articles/power-of-raml/zh/resources/0923001.png">
-<meta property="og:updated_time" content="2016-11-24T06:03:34.652Z">
+<meta property="og:updated_time" content="2016-11-24T08:21:42.119Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RAML介绍">
 <meta name="twitter:description" content="RAML是什么
@@ -288,107 +288,24 @@ Write once. Use many. Creative laziness encouragedRESTful API Modeling Language 
 <p> 但是，仅仅简单地创建一个原型是不够的。MuleSoft创建了一种API契约设计周期图，这一设计的前提在于API不仅仅是机器之间的一种契约，同样也是提供商与用户之间的一种契约。</p>
 <p> <img src="http://cdn4.infoqstatic.com/statics_s1_20161122-0331/resource/articles/power-of-raml/zh/resources/0923001.png" alt=""></p>
 <p> 在API设计后，可以对外提供模拟的API调用，这样就能从API使用者那得到具体反馈。这些有价值的反馈能够让公司找到设计中的缺陷，例如数据或结构中的不一致性，以及API中的一些令人困惑之处。在这一阶段及时发现设计中的问题非常关键，因为一旦你的API发布之后需要修改，那么在大多数情况下都会破坏向后兼容性，而这将影响API的使用。</p>
+<p> 这里就不对RAML的具体语法做说明了，在我的另一篇文章《<a href="https://eternityrain.github.io/2016/11/24/raml%E8%AF%AD%E6%B3%95%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/" target="_blank" rel="external">raml语法简单介绍</a>》中对语法有相关介绍。</p>
 <h2 id="为什么用RAML"><a href="#为什么用RAML" class="headerlink" title="为什么用RAML"></a>为什么用RAML</h2><p> RAML的目的不仅仅在于创建更易于理解的规范（你可以将这一工作指派给文档团队，他们会做得更好）而已。RAML的设计者Uri Sarid希望使用者能够打破固有的思维，在开始编写代码之前以一种全新的方式对API进行建模。<br> Roy Fielding博士在他的博客Untangled中指出，现在的人们总有一种倾向，他们只考虑短期的设计，目光只能看到我们所知的、我们目前所想的内容。</p>
 <p> REST风格的发明者Roy Fielding表示：“很不幸，人们很善于处理短期的设计，但对于长期的设计通常就束手无策了。”  </p>
 <p> 设计API的一大挑战在于，API通常都会存在较长的一段时间，有可能会存在数年之久。毕竟，API的设计需要开发者投入大量的精力，但同样对于客户来说也是一种极大的投入，因为客户也依赖于这些API，需要基于它们进行开发。从2009年起，Uri开始思考如何解决API的长期设计的挑战，他希望能够找到一种工具，让设计者只需几行代码就能够对API进行建模（或设计），然后快速地生成一个原型，让全球的开发者都能够尝试你的原型并提供反馈。在2013年，随着RAML 0.8的发布，他的梦想终于变成了现实。</p>
 <p> 自那时起，人们对于RAML的兴趣就在不断地升温。无论是大型企业还是小公司，他们都开始意识到了RAML所带来的益处：包括以一种人类可读的格式设计API、在设计时就看到这些API将怎样工作、并且能够为API创建一个活动的、全功能的示例，让开发者能够简单地通过点击按键，对这个API发起实际的调用。</p>
-<h2 id="RAML可以做什么"><a href="#RAML可以做什么" class="headerlink" title="RAML可以做什么"></a>RAML可以做什么</h2><p> RAML定义出的文件可以通过MuleSoft提供的RAML for Jax-RS插件，生成基于JAX-RS协议的Java代码。同时Java代码也可以通过此插件生成相对应的RAML文件。</p>
-<h2 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h2><ul>
-<li>Maven 插件</li>
-<li>eclipse插件</li>
-<li>命令行</li>
+<h2 id="周边生态"><a href="#周边生态" class="headerlink" title="周边生态"></a>周边生态</h2><ul>
+<li><p>DESIGN<br>对于基于RAML的API设计，通常使用API Workbench或API Designer作为设计平台。它们都是由mulesoft开发的，前者作为Atom的插件使用，后者是单独的一个设计平台。</p>
+</li>
+<li><p>BUILD<br>设计好的API可以由多种方式进行build： NodeJS,JAVA,NET,Python,Mule,IOT<br>这里我只简单介我们常用的两种。对于JAVA来说，通常我们使用RAML for JAX-RS进行build，简单来说就是把设计好的RAML转换成<a href="https://eternityrain.github.io/2016/09/27/JAX-RS%E8%A7%84%E8%8C%83%E7%9A%84%E7%89%88%E6%9C%AC.%E5%AE%9E%E7%8E%B0.jar%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/" target="_blank" rel="external">JAX-RS规范</a>的java代码，用于后续的deploy。还有一种是mule的APIkit,它基于anypoint studio进行raml翻译及build。</p>
+</li>
+<li><p>TEST<br>我们可以用多数的第三方进行测试，如API Fortress, API Science, Parasoft, Postman, SmartBear。</p>
+</li>
+<li><p>Document<br>形成API文档，我们不再需要花大量的时间。运用API Console，RAML to HTML我们即可以根据RAML自动化动态的生成文档。</p>
+</li>
+<li><p>SHARE<br>我们可以简单的根据RESTful API为Java,.NET,PHP,Ruby等主流语言生成SDK，也可以使用API Notebook体验全新的API交互方式。API Notebook完全改变了开发人员与API交互的方式，让他们可以使用基本的JavaScript轻松地尝试调用，操作数据，甚至连接到多个API。</p>
+</li>
 </ul>
-<h3 id="Maven插件"><a href="#Maven插件" class="headerlink" title="Maven插件"></a>Maven插件</h3><h4 id="RAML-to-JAX-RS"><a href="#RAML-to-JAX-RS" class="headerlink" title="RAML to JAX-RS"></a>RAML to JAX-RS</h4><hr>
-<p>这个Maven plug-in用来生成JAX-RS协议的接口，支持基于单一或多个RAML文件</p>
-<h5 id="Maven-组件"><a href="#Maven-组件" class="headerlink" title="Maven 组件"></a>Maven 组件</h5><p>Maven 组件仓库地址</p>
-<ul>
-<li><a href="https://repository-master.mulesoft.org/releases/" target="_blank" rel="external">https://repository-master.mulesoft.org/releases/</a> - release repository</li>
-<li><a href="https://repository-master.mulesoft.org/snapshots/" target="_blank" rel="external">https://repository-master.mulesoft.org/snapshots/</a> - snaphots repository</li>
-</ul>
-<h5 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h5><p>需要在Project中的Pom文件中增加以下plug-in内容， 例如：</p>
-<pre><code>&lt;plugin&gt;
-&lt;groupId&gt;org.raml.plugins&lt;/groupId&gt;
-&lt;artifactId&gt;raml-jaxrs-maven-plugin&lt;/artifactId&gt;
-&lt;version&gt;1.3.4&lt;/version&gt;
-&lt;configuration&gt;
-    &lt;!-- Use sourcePaths if you want to provide a single RAML file or a list of RAML files --&gt;
-    &lt;sourceDirectory&gt;${basedir}/raml&lt;/sourceDirectory&gt;
-    &lt;!-- Optionally configure outputDirectory if you don&apos;t like the default value: ${project.build.directory}/generated-sources/raml-JAX-RS --&gt;
-    &lt;!-- Replace with your package name --&gt;
-    &lt;basePackageName&gt;com.acme.api&lt;/basePackageName&gt;
-    &lt;!-- Valid values: 1.1 2.0 --&gt;
-    &lt;jaxrsVersion&gt;2.0&lt;/jaxrsVersion&gt;
-    &lt;useJsr303Annotations&gt;false&lt;/useJsr303Annotations&gt;
-    &lt;!-- Valid values: jackson1 jackson2 gson none --&gt;
-    &lt;jsonMapper&gt;jackson2&lt;/jsonMapper&gt;
-    &lt;removeOldOutput&gt;true&lt;/removeOldOutput&gt;
-    &lt;!-- Optionally set extensions to a list of fully qualified names of classes
-    that implement org.raml.jaxrs.codegen.core.ext.GeneratorExtension --&gt;
-    &lt;!-- for example:
-    &lt;extensions&gt;
-        &lt;param&gt;com.abc.AuthorizationAnnotationExtension&lt;/param&gt;
-        &lt;param&gt;com.abc.ParameterFilterExtension&lt;/param&gt;
-    &lt;/extensions&gt;
-    Custom annotator for json schema to pojo convertor
-    &lt;customAnnotator&gt;com.abc.MyCustomAnnotator&lt;/customAnnotator&gt;
-    --&gt;
-&lt;/configuration&gt;
-&lt;executions&gt;
-    &lt;execution&gt;
-        &lt;goals&gt;
-            &lt;goal&gt;generate&lt;/goal&gt;
-        &lt;/goals&gt;
-        &lt;phase&gt;generate-sources&lt;/phase&gt;
-    &lt;/execution&gt;
-&lt;/executions&gt;
-</code></pre><p></p>
-<h5 id="配置中的Schema"><a href="#配置中的Schema" class="headerlink" title="配置中的Schema"></a>配置中的Schema</h5><table>
-<thead>
-<tr>
-<th style="text-align:left">Schema</th>
-<th style="text-align:right">Default Value</th>
-<th style="text-align:center">Optional</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">sourceDirectory</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
-</tr>
-<tr>
-<td style="text-align:left">basePackageName</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
-</tr>
-<tr>
-<td style="text-align:left">jaxrsVersion</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
-</tr>
-<tr>
-<td style="text-align:left">useJsr303Annotations</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
-</tr>
-<tr>
-<td style="text-align:left">jsonMapper</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
-</tr>
-<tr>
-<td style="text-align:left">extensions</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
-</tr>
-<tr>
-<td style="text-align:left">customAnnotator</td>
-<td style="text-align:right">field2</td>
-<td style="text-align:center">yes</td>
-</tr>
-</tbody>
-</table>
-<p>当你运行<code>mvn raml:generate</code>时，RAML定义的内容就会被处理生成相应的Java代码，同样如果你配置了相应的executions那么在运行<code>mvn compile</code> or <code>mvn package</code>这个插件也会执行。</p>
+<p><strong>Raml提供了全新的RESTful API设计方式，围绕其周边衍生出若干方便快捷的解决方案。无论是从思维、交互性还是效率上来说，它都是api设计上的一次成功的进步</strong></p>
 
       
     </div>
@@ -421,6 +338,10 @@ Write once. Use many. Creative laziness encouragedRESTful API Modeling Language 
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/24/raml-for-jax-rs插件/" rel="prev" title="raml-for-jax-rs插件">
+                raml-for-jax-rs插件 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -488,7 +409,7 @@ Write once. Use many. Creative laziness encouragedRESTful API Modeling Language 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -534,7 +455,7 @@ Write once. Use many. Creative laziness encouragedRESTful API Modeling Language 
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RAML是什么"><span class="nav-number">1.</span> <span class="nav-text">RAML是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用RAML"><span class="nav-number">2.</span> <span class="nav-text">为什么用RAML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RAML可以做什么"><span class="nav-number">3.</span> <span class="nav-text">RAML可以做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式"><span class="nav-number">4.</span> <span class="nav-text">方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven插件"><span class="nav-number">4.1.</span> <span class="nav-text">Maven插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RAML-to-JAX-RS"><span class="nav-number">4.1.1.</span> <span class="nav-text">RAML to JAX-RS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Maven-组件"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">Maven 组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方式"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置中的Schema"><span class="nav-number">4.1.1.3.</span> <span class="nav-text">配置中的Schema</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RAML是什么"><span class="nav-number">1.</span> <span class="nav-text">RAML是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用RAML"><span class="nav-number">2.</span> <span class="nav-text">为什么用RAML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#周边生态"><span class="nav-number">3.</span> <span class="nav-text">周边生态</span></a></li></ol></div>
             
           </div>
         </section>
