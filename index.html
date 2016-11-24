@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -235,6 +235,200 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/24/RAML介绍/" itemprop="url">
+                  RAML介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-11-24T11:04:26+08:00" content="2016-11-24">
+              2016-11-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="RAML是什么"><a href="#RAML是什么" class="headerlink" title="RAML是什么"></a>RAML是什么</h2><blockquote>
+<p><strong>Write once. Use many. Creative laziness encouraged</strong><br>RESTful API Modeling Language (RAML) makes it easy to manage the whole API lifecycle from design to sharing. It’s concise - you only write what you need to define - and reusable. It is machine readable API design that is actually human friendly.</p>
+</blockquote>
+<p> RAML是一种语言，可以使用RAML描述基于Restful架构的API</p>
+<h2 id="RAML可以做什么"><a href="#RAML可以做什么" class="headerlink" title="RAML可以做什么"></a>RAML可以做什么</h2><p> RAML定义出的文件可以通过MuleSoft提供的RAML for Jax-RS插件，生成基于JAX-RS协议的Java代码。同时Java代码也可以通过此插件生成相对应的RAML文件。</p>
+<h2 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h2><ul>
+<li>Maven 插件</li>
+<li>eclipse插件</li>
+<li>命令行</li>
+</ul>
+<h3 id="Maven插件"><a href="#Maven插件" class="headerlink" title="Maven插件"></a>Maven插件</h3><h4 id="RAML-to-JAX-RS"><a href="#RAML-to-JAX-RS" class="headerlink" title="RAML to JAX-RS"></a>RAML to JAX-RS</h4><hr>
+<p>这个Maven plug-in用来生成JAX-RS协议的接口，支持基于单一或多个RAML文件</p>
+<h5 id="Maven-组件"><a href="#Maven-组件" class="headerlink" title="Maven 组件"></a>Maven 组件</h5><p>Maven 组件仓库地址</p>
+<ul>
+<li><a href="https://repository-master.mulesoft.org/releases/" target="_blank" rel="external">https://repository-master.mulesoft.org/releases/</a> - release repository</li>
+<li><a href="https://repository-master.mulesoft.org/snapshots/" target="_blank" rel="external">https://repository-master.mulesoft.org/snapshots/</a> - snaphots repository</li>
+</ul>
+<h5 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h5><p>需要在Project中的Pom文件中增加以下plug-in内容， 例如：</p>
+<pre><code>&lt;plugin&gt;
+&lt;groupId&gt;org.raml.plugins&lt;/groupId&gt;
+&lt;artifactId&gt;raml-jaxrs-maven-plugin&lt;/artifactId&gt;
+&lt;version&gt;1.3.4&lt;/version&gt;
+&lt;configuration&gt;
+    &lt;!-- Use sourcePaths if you want to provide a single RAML file or a list of RAML files --&gt;
+    &lt;sourceDirectory&gt;${basedir}/raml&lt;/sourceDirectory&gt;
+    &lt;!-- Optionally configure outputDirectory if you don&apos;t like the default value: ${project.build.directory}/generated-sources/raml-JAX-RS --&gt;
+    &lt;!-- Replace with your package name --&gt;
+    &lt;basePackageName&gt;com.acme.api&lt;/basePackageName&gt;
+    &lt;!-- Valid values: 1.1 2.0 --&gt;
+    &lt;jaxrsVersion&gt;2.0&lt;/jaxrsVersion&gt;
+    &lt;useJsr303Annotations&gt;false&lt;/useJsr303Annotations&gt;
+    &lt;!-- Valid values: jackson1 jackson2 gson none --&gt;
+    &lt;jsonMapper&gt;jackson2&lt;/jsonMapper&gt;
+    &lt;removeOldOutput&gt;true&lt;/removeOldOutput&gt;
+    &lt;!-- Optionally set extensions to a list of fully qualified names of classes
+    that implement org.raml.jaxrs.codegen.core.ext.GeneratorExtension --&gt;
+    &lt;!-- for example:
+    &lt;extensions&gt;
+        &lt;param&gt;com.abc.AuthorizationAnnotationExtension&lt;/param&gt;
+        &lt;param&gt;com.abc.ParameterFilterExtension&lt;/param&gt;
+    &lt;/extensions&gt;
+    Custom annotator for json schema to pojo convertor
+    &lt;customAnnotator&gt;com.abc.MyCustomAnnotator&lt;/customAnnotator&gt;
+    --&gt;
+&lt;/configuration&gt;
+&lt;executions&gt;
+    &lt;execution&gt;
+        &lt;goals&gt;
+            &lt;goal&gt;generate&lt;/goal&gt;
+        &lt;/goals&gt;
+        &lt;phase&gt;generate-sources&lt;/phase&gt;
+    &lt;/execution&gt;
+&lt;/executions&gt;
+</code></pre><p></p>
+<h5 id="配置中的Schema"><a href="#配置中的Schema" class="headerlink" title="配置中的Schema"></a>配置中的Schema</h5><table>
+<thead>
+<tr>
+<th style="text-align:left">Schema</th>
+<th style="text-align:right">Default Value</th>
+<th style="text-align:center">Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">sourceDirectory</td>
+<td style="text-align:right">field2</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">basePackageName</td>
+<td style="text-align:right">field2</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">jaxrsVersion</td>
+<td style="text-align:right">field2</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">useJsr303Annotations</td>
+<td style="text-align:right">field2</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">jsonMapper</td>
+<td style="text-align:right">field2</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">extensions</td>
+<td style="text-align:right">field2</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">customAnnotator</td>
+<td style="text-align:right">field2</td>
+<td style="text-align:center">yes</td>
+</tr>
+</tbody>
+</table>
+<p>当你运行<code>mvn raml:generate</code>时，RAML定义的内容就会被处理生成相应的Java代码，同样如果你配置了相应的executions那么在运行<code>mvn compile</code> or <code>mvn package</code>这个插件也会执行。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/27/Jsonschema2pojo/" itemprop="url">
                   Json schema规范写法
                 </a>
@@ -248,7 +442,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T15:00:47+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -691,7 +885,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:46:09+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -703,7 +897,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/JAX-RS/" itemprop="url" rel="index">
@@ -836,7 +1030,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:36:21+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -848,7 +1042,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/JAX-RS/" itemprop="url" rel="index">
@@ -1105,8 +1299,8 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1114,7 +1308,7 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -1123,7 +1317,7 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1167,7 +1361,7 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
