@@ -92,11 +92,13 @@ Write once. Use many. Creative laziness encouragedRESTful API Modeling Language 
 <meta property="og:site_name" content="Eternity Rain">
 <meta property="og:description" content="RAML是什么
 Write once. Use many. Creative laziness encouragedRESTful API Modeling Language (RAML) makes it easy to manage the whole API lifecycle from design to sharing. It’s concise - you only write wha">
-<meta property="og:updated_time" content="2016-11-24T03:20:33.067Z">
+<meta property="og:image" content="http://cdn4.infoqstatic.com/statics_s1_20161122-0331/resource/articles/power-of-raml/zh/resources/0923001.png">
+<meta property="og:updated_time" content="2016-11-24T06:03:34.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RAML介绍">
 <meta name="twitter:description" content="RAML是什么
 Write once. Use many. Creative laziness encouragedRESTful API Modeling Language (RAML) makes it easy to manage the whole API lifecycle from design to sharing. It’s concise - you only write wha">
+<meta name="twitter:image" content="http://cdn4.infoqstatic.com/statics_s1_20161122-0331/resource/articles/power-of-raml/zh/resources/0923001.png">
 
 
 
@@ -282,7 +284,14 @@ Write once. Use many. Creative laziness encouragedRESTful API Modeling Language 
         <h2 id="RAML是什么"><a href="#RAML是什么" class="headerlink" title="RAML是什么"></a>RAML是什么</h2><blockquote>
 <p><strong>Write once. Use many. Creative laziness encouraged</strong><br>RESTful API Modeling Language (RAML) makes it easy to manage the whole API lifecycle from design to sharing. It’s concise - you only write what you need to define - and reusable. It is machine readable API design that is actually human friendly.</p>
 </blockquote>
-<p> RAML是一种语言，可以使用RAML描述基于Restful架构的API</p>
+<p> RAML的全称是RESTful API Modeling Language，这是一种用来描述基于Restful架构的API（设计API）的语言。它的语法规范是基于YAML的新规范，因此机器与人类都能够轻易地理解其中的内容。  </p>
+<p> 但是，仅仅简单地创建一个原型是不够的。MuleSoft创建了一种API契约设计周期图，这一设计的前提在于API不仅仅是机器之间的一种契约，同样也是提供商与用户之间的一种契约。</p>
+<p> <img src="http://cdn4.infoqstatic.com/statics_s1_20161122-0331/resource/articles/power-of-raml/zh/resources/0923001.png" alt=""></p>
+<p> 在API设计后，可以对外提供模拟的API调用，这样就能从API使用者那得到具体反馈。这些有价值的反馈能够让公司找到设计中的缺陷，例如数据或结构中的不一致性，以及API中的一些令人困惑之处。在这一阶段及时发现设计中的问题非常关键，因为一旦你的API发布之后需要修改，那么在大多数情况下都会破坏向后兼容性，而这将影响API的使用。</p>
+<h2 id="为什么用RAML"><a href="#为什么用RAML" class="headerlink" title="为什么用RAML"></a>为什么用RAML</h2><p> RAML的目的不仅仅在于创建更易于理解的规范（你可以将这一工作指派给文档团队，他们会做得更好）而已。RAML的设计者Uri Sarid希望使用者能够打破固有的思维，在开始编写代码之前以一种全新的方式对API进行建模。<br> Roy Fielding博士在他的博客Untangled中指出，现在的人们总有一种倾向，他们只考虑短期的设计，目光只能看到我们所知的、我们目前所想的内容。</p>
+<p> REST风格的发明者Roy Fielding表示：“很不幸，人们很善于处理短期的设计，但对于长期的设计通常就束手无策了。”  </p>
+<p> 设计API的一大挑战在于，API通常都会存在较长的一段时间，有可能会存在数年之久。毕竟，API的设计需要开发者投入大量的精力，但同样对于客户来说也是一种极大的投入，因为客户也依赖于这些API，需要基于它们进行开发。从2009年起，Uri开始思考如何解决API的长期设计的挑战，他希望能够找到一种工具，让设计者只需几行代码就能够对API进行建模（或设计），然后快速地生成一个原型，让全球的开发者都能够尝试你的原型并提供反馈。在2013年，随着RAML 0.8的发布，他的梦想终于变成了现实。</p>
+<p> 自那时起，人们对于RAML的兴趣就在不断地升温。无论是大型企业还是小公司，他们都开始意识到了RAML所带来的益处：包括以一种人类可读的格式设计API、在设计时就看到这些API将怎样工作、并且能够为API创建一个活动的、全功能的示例，让开发者能够简单地通过点击按键，对这个API发起实际的调用。</p>
 <h2 id="RAML可以做什么"><a href="#RAML可以做什么" class="headerlink" title="RAML可以做什么"></a>RAML可以做什么</h2><p> RAML定义出的文件可以通过MuleSoft提供的RAML for Jax-RS插件，生成基于JAX-RS协议的Java代码。同时Java代码也可以通过此插件生成相对应的RAML文件。</p>
 <h2 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h2><ul>
 <li>Maven 插件</li>
@@ -413,6 +422,10 @@ Write once. Use many. Creative laziness encouragedRESTful API Modeling Language 
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2016/11/24/raml语法简单介绍/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -479,7 +492,7 @@ Write once. Use many. Creative laziness encouragedRESTful API Modeling Language 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -525,7 +538,7 @@ Write once. Use many. Creative laziness encouragedRESTful API Modeling Language 
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RAML是什么"><span class="nav-number">1.</span> <span class="nav-text">RAML是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RAML可以做什么"><span class="nav-number">2.</span> <span class="nav-text">RAML可以做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式"><span class="nav-number">3.</span> <span class="nav-text">方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven插件"><span class="nav-number">3.1.</span> <span class="nav-text">Maven插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RAML-to-JAX-RS"><span class="nav-number">3.1.1.</span> <span class="nav-text">RAML to JAX-RS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Maven-组件"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">Maven 组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方式"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置中的Schema"><span class="nav-number">3.1.1.3.</span> <span class="nav-text">配置中的Schema</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RAML是什么"><span class="nav-number">1.</span> <span class="nav-text">RAML是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用RAML"><span class="nav-number">2.</span> <span class="nav-text">为什么用RAML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RAML可以做什么"><span class="nav-number">3.</span> <span class="nav-text">RAML可以做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式"><span class="nav-number">4.</span> <span class="nav-text">方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven插件"><span class="nav-number">4.1.</span> <span class="nav-text">Maven插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RAML-to-JAX-RS"><span class="nav-number">4.1.1.</span> <span class="nav-text">RAML to JAX-RS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Maven-组件"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">Maven 组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方式"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置中的Schema"><span class="nav-number">4.1.1.3.</span> <span class="nav-text">配置中的Schema</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
