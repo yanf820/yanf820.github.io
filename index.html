@@ -235,236 +235,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/24/raml语法简单介绍/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-11-24T14:25:20+08:00" content="2016-11-24">
-              2016-11-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>RAML(RESTful API Modeling Language)<br>=<br>简介<br>-<br>RAML的全称是RESTful API建模语言，这是一种基于YAML格式的新规范，因此机器与人类都能够轻易地理解其中的内容。但RAML的目的不仅仅在于创建更易于理解的规范（你可以将这一工作指派给文档团队，他们会做得更好）而已。RAML的设计者Uri Sarid希望使用者能够打破固有的思维，在开始编写代码之前以一种全新的方式对API进行建模。<br>设计API的一大挑战在于，API通常都会存在较长的一段时间，有可能会存在数年之久。毕竟，API的设计需要开发者投入大量的精力，但同样对于客户来说也是一种极大的投入，因为客户也依赖于这些API，需要基于它们进行开发。从2009年起，Uri开始思考如何解决API的长期设计的挑战，他希望能够找到一种工具，让设计者只需几行代码就能够对API进行建模（或设计），然后快速地生成一个原型，让全球的开发者都能够尝试你的原型并提供反馈。在2013年，随着RAML 0.8的发布，他的梦想终于变成了现实。<br>API 契约的设计周期<br>-<br>API不仅仅是机器之间的一种契约，同样也是提供商与用户之间的一种契约  </p>
-<blockquote>
-<p><img src="http://i.imgur.com/M42GGav.png" alt="">  </p>
-<p>设计API = &gt; 模拟访问 = &gt; 征求反馈 = &gt; 验证通过或持续改进 =&gt; 发布  </p>
-<blockquote>
-<p>在设计与创建原型之后，开发API的公司需要找到一种方式以共享他们的API，并从使用者那里获取反馈。<br>这些有价值的反馈能够让公司找到设计中的缺陷，例如数据或结构中的不一致性，以及API中的一些令人困惑之处。<br>在这一阶段及时发现设计中的问题非常关键，因为一旦你的API发布之后需要修改，那么在大多数情况下都会破坏向后兼容性，<br>而这将影响API的使用。</p>
-</blockquote>
-</blockquote>
-<h2 id="人类可读的raml语法"><a href="#人类可读的raml语法" class="headerlink" title="人类可读的raml语法"></a>人类可读的raml语法</h2><p>开始设计时，首先创建一个包含以下内容的RAML文件：  </p>
-<pre><code>#%RAML 0.8
-title: This is My API
-baseUri: http://api.domain.com
-version: 1
-</code></pre><p>在以上代码中，我们首先声明这是一个RAML规范，它对应RAML 0.8，并声明API的标题、基本URI、以及这个API的版本号。<br>在RAML中声明资源非常简单，只需使用/resourceName格式。而添加方法也同样便捷，只需引用相应的HTTP谓词即可：  </p>
-<pre><code>#%RAML 0.8
-title: This is My API
-baseUri: http://api.domain.com
-version: 1
-
-/resource1:
-  get:
-    description: This gets the collection of resource1
-  post:
-    description: This adds a new item to the collection
-</code></pre><p>RAML让你能够定义多种相应，返回不同的状态码、头信息以及响应体。例如：  </p>
-<pre><code>#%RAML 0.8
-title: This is My API
-baseUri: http://api.domain.com
-version: 1
-
-/resource1:
-  get:
-    responses:
-      200:
-        headers:
-          cache-control:
-            example: |
-              public, no-cache, no-store
-
-        body:
-          application/json:
-            example: |
-              {&quot;name&quot;:&quot;Michael Stowe&quot;}
-          application/xml:
-            example: |
-              &lt;name&gt;Michael Stowe&lt;/name&gt;
-      400:
-        #...
-      401:
-        #...
-</code></pre><p>RAML本身还有大量的其它特性，让你通过schema与参数定义完整的API。它还允许你使用资源嵌套、文件引用（可以引用多个文件，以保持规范的易读性和易组织性），甚至是变量或属性的设置，从而在整个规范中保持一致性。</p>
-<pre><code>举例来说，你可以在规范中按以下方式利用这些特性：
-
-#%RAML 0.8
-title: This is My API
-baseUri: http://api.domain.com
-version: 1
-
-/resource1:
-  get:
-    responses:
-      200:
-        body:
-          application/json:
-            schema: |
-              {
-                  &quot;type&quot;: &quot;object&quot;,
-                  &quot;$schema&quot;: &quot;http://json-schema.org/draft-03/schema&quot;,
-                  &quot;id&quot;: &quot;http://jsonschema.net&quot;,
-                  &quot;required&quot;: true,
-                  &quot;properties&quot;: {
-                    &quot;firstName&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;required&quot;: true
-                    },
-                    &quot;lastName&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;required&quot;: true,
-                      &quot;minLength&quot;: 3,
-                      &quot;maxLength&quot;: 36
-                    }
-                  }
-              }
-
-  /sub-resource:
-    get:
-      queryParameters:
-        firstName:
-          description: &quot;the user’s first name&quot;
-          example: John
-          required: true
-          type: string
-</code></pre><p>###对开发者十分友好###</p>
-<p>RAML的优点不仅在于简单的格式与丰富的工具，它还能够让开发者应用编码的最佳实践，例如模式与重用代码。这不仅能够极大地减少开发者的工作，还能够促使API在不同的资源与方法中保持统一性。虽然你总是能够抽象出一套schema，以保持规范的良好组织，或是通过“!include”命令引入schema、示例与其它RAML代码片段，但RAML还提供了两个额外的实用与独特的模板特性：即traits与resourceTypes  </p>
-<p>####通过traits定义通用属性####</p>
-<p>RAML的traits特性允许你为方法（GET、PUT、POST、PATCH、DELETE等等）定义通用的属性（或traits），例如它们是否可过滤、可搜索或是可分页。</p>
-<p>在创建trait时，你实际上是创建了一份模板，它能够通过接受参数为方法提供属性，只需几行代码就能够完成。同时为你所需的trait提供了最大程度的灵活性与自定义能力：  </p>
-<pre><code>traits:
--searchable:
-  queryParameters:
-  query:
-  description: |
-    JSON array [{&quot;field1&quot;,&quot;value1&quot;,&quot;operator1&quot;},…] &lt;&lt;description&gt;
-  example: |
-    &lt;&lt;example&gt;&gt;
-
-/people:
-  get:
-    is: [searchable: {description: &quot;search by name&quot;, example: &quot;[\&quot;firstName\&quot;\,\&quot;Michael\&quot;,\&quot;like\&quot;]&quot;}]  
-</code></pre><p>####通过ResourceTypes为资源定义模板####</p>
-<p>此外，与traits相似，resourceTypes也允许你为资源本身创建模板，以此调用通用的方法与响应。打个比方，对于Collection这种资源类型来说，你可能会大量用到POST与GET方法，并且通常会返回200、201或400等状态码。只要将它定义为一种resourceType，你就能够通过两行代码就完成调用，而无需为你所创建的每种资源都加入相同的方法与状态码。</p>
-<pre><code>resourceTypes:
-- collection:
-    description: Collection of available &lt;&lt;resourcePathName&gt;&gt;
-    get:
-      description: Get a list of &lt;&lt;resourcePathName&gt;&gt;.
-      responses:
-        200:
-          body:
-            application/json:
-              example: |
-                &lt;&lt;responseVariable&gt;&gt;
-        400:
-          #...
-        401:
-          #...
-
-/people:
-  type:
-    collection:
-      responseVariable: |
-        {
-         &quot;name&quot; : &quot;Michael Stowe&quot;,
-         &quot;company&quot; : &quot;MuleSoft&quot;,
-        }
-</code></pre><p>你甚至可以在resourceTypes中定义可选的方法，只需为该方法加上一个问号（？）即可。这种可选方法只有在定义了该方法的资源中才会被引入，这就为你赋予了更大的灵活性。  </p>
-<p>###注：这里只介绍了一些基本用法，详细用法请参考<a href="https://github.com/raml-org/raml-spec/blob/master/raml-0.8.md" target="_blank" rel="external">github上的官方语法介绍</a>###</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/11/24/RAML介绍/" itemprop="url">
                   RAML介绍
                 </a>
@@ -617,6 +387,228 @@ version: 1
 </tbody>
 </table>
 <p>当你运行<code>mvn raml:generate</code>时，RAML定义的内容就会被处理生成相应的Java代码，同样如果你配置了相应的executions那么在运行<code>mvn compile</code> or <code>mvn package</code>这个插件也会执行。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/24/raml语法简单介绍/" itemprop="url">
+                  RAML语法简单介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-11-24T11:04:26+08:00" content="2016-11-24">
+              2016-11-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="人类可读的raml语法"><a href="#人类可读的raml语法" class="headerlink" title="人类可读的raml语法"></a>人类可读的raml语法</h2><p>开始设计时，首先创建一个包含以下内容的RAML文件：  </p>
+<pre><code>#%RAML 0.8
+title: This is My API
+baseUri: http://api.domain.com
+version: 1
+</code></pre><p>在以上代码中，我们首先声明这是一个RAML规范，它对应RAML 0.8，并声明API的标题、基本URI、以及这个API的版本号。<br>在RAML中声明资源非常简单，只需使用/resourceName格式。而添加方法也同样便捷，只需引用相应的HTTP谓词即可：  </p>
+<pre><code>#%RAML 0.8
+title: This is My API
+baseUri: http://api.domain.com
+version: 1
+
+/resource1:
+  get:
+    description: This gets the collection of resource1
+  post:
+    description: This adds a new item to the collection
+</code></pre><p>RAML让你能够定义多种相应，返回不同的状态码、头信息以及响应体。例如：  </p>
+<pre><code>#%RAML 0.8
+title: This is My API
+baseUri: http://api.domain.com
+version: 1
+
+/resource1:
+  get:
+    responses:
+      200:
+        headers:
+          cache-control:
+            example: |
+              public, no-cache, no-store
+
+        body:
+          application/json:
+            example: |
+              {&quot;name&quot;:&quot;Michael Stowe&quot;}
+          application/xml:
+            example: |
+              &lt;name&gt;Michael Stowe&lt;/name&gt;
+      400:
+        #...
+      401:
+        #...
+</code></pre><p>RAML本身还有大量的其它特性，让你通过schema与参数定义完整的API。它还允许你使用资源嵌套、文件引用（可以引用多个文件，以保持规范的易读性和易组织性），甚至是变量或属性的设置，从而在整个规范中保持一致性。</p>
+<pre><code>举例来说，你可以在规范中按以下方式利用这些特性：
+
+#%RAML 0.8
+title: This is My API
+baseUri: http://api.domain.com
+version: 1
+
+/resource1:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;$schema&quot;: &quot;http://json-schema.org/draft-03/schema&quot;,
+                  &quot;id&quot;: &quot;http://jsonschema.net&quot;,
+                  &quot;required&quot;: true,
+                  &quot;properties&quot;: {
+                    &quot;firstName&quot;: {
+                      &quot;type&quot;: &quot;string&quot;,
+                      &quot;required&quot;: true
+                    },
+                    &quot;lastName&quot;: {
+                      &quot;type&quot;: &quot;string&quot;,
+                      &quot;required&quot;: true,
+                      &quot;minLength&quot;: 3,
+                      &quot;maxLength&quot;: 36
+                    }
+                  }
+              }
+
+  /sub-resource:
+    get:
+      queryParameters:
+        firstName:
+          description: &quot;the user’s first name&quot;
+          example: John
+          required: true
+          type: string
+</code></pre><p>##对开发者十分友好</p>
+<p>RAML的优点不仅在于简单的格式与丰富的工具，它还能够让开发者应用编码的最佳实践，例如模式与重用代码。这不仅能够极大地减少开发者的工作，还能够促使API在不同的资源与方法中保持统一性。虽然你总是能够抽象出一套schema，以保持规范的良好组织，或是通过“!include”命令引入schema、示例与其它RAML代码片段，但RAML还提供了两个额外的实用与独特的模板特性：即traits与resourceTypes  </p>
+<p>###通过traits定义通用属性</p>
+<p>RAML的traits特性允许你为方法（GET、PUT、POST、PATCH、DELETE等等）定义通用的属性（或traits），例如它们是否可过滤、可搜索或是可分页。</p>
+<p>在创建trait时，你实际上是创建了一份模板，它能够通过接受参数为方法提供属性，只需几行代码就能够完成。同时为你所需的trait提供了最大程度的灵活性与自定义能力：  </p>
+<pre><code>traits:
+-searchable:
+  queryParameters:
+  query:
+  description: |
+    JSON array [{&quot;field1&quot;,&quot;value1&quot;,&quot;operator1&quot;},…] &lt;&lt;description&gt;
+  example: |
+    &lt;&lt;example&gt;&gt;
+
+/people:
+  get:
+    is: [searchable: {description: &quot;search by name&quot;, example: &quot;[\&quot;firstName\&quot;\,\&quot;Michael\&quot;,\&quot;like\&quot;]&quot;}]  
+</code></pre><p>###通过ResourceTypes为资源定义模板</p>
+<p>此外，与traits相似，resourceTypes也允许你为资源本身创建模板，以此调用通用的方法与响应。打个比方，对于Collection这种资源类型来说，你可能会大量用到POST与GET方法，并且通常会返回200、201或400等状态码。只要将它定义为一种resourceType，你就能够通过两行代码就完成调用，而无需为你所创建的每种资源都加入相同的方法与状态码。</p>
+<pre><code>resourceTypes:
+- collection:
+    description: Collection of available &lt;&lt;resourcePathName&gt;&gt;
+    get:
+      description: Get a list of &lt;&lt;resourcePathName&gt;&gt;.
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                &lt;&lt;responseVariable&gt;&gt;
+        400:
+          #...
+        401:
+          #...
+
+/people:
+  type:
+    collection:
+      responseVariable: |
+        {
+         &quot;name&quot; : &quot;Michael Stowe&quot;,
+         &quot;company&quot; : &quot;MuleSoft&quot;,
+        }
+</code></pre><p>你甚至可以在resourceTypes中定义可选的方法，只需为该方法加上一个问号（？）即可。这种可选方法只有在定义了该方法的资源中才会被引入，这就为你赋予了更大的灵活性。  </p>
+<p>###注：这里只介绍了一些基本用法，详细用法请参考<a href="https://github.com/raml-org/raml-spec/blob/master/raml-0.8.md" target="_blank" rel="external">官方语法介绍</a>###</p>
 
           
         
