@@ -360,53 +360,63 @@
     &lt;/execution&gt;
 &lt;/executions&gt;
 &lt;/plugin&gt;
-</code></pre><h5 id="配置中的Schema"><a href="#配置中的Schema" class="headerlink" title="配置中的Schema"></a>配置中的Schema</h5><table>
+</code></pre><h5 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a>配置说明</h5><table>
 <thead>
 <tr>
 <th style="text-align:left">Schema</th>
-<th>Default Value</th>
+<th>Mean</th>
 <th>Optional</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">sourceDirectory</td>
-<td>field2</td>
-<td>yes</td>
+<td>raml文件目录</td>
+<td>custom</td>
+</tr>
+<tr>
+<td style="text-align:left">sourcePaths</td>
+<td>raml文件路径集合</td>
+<td>custom</td>
+</tr>
+<tr>
+<td style="text-align:left">outputDirectory</td>
+<td>输出目录</td>
+<td>custom</td>
 </tr>
 <tr>
 <td style="text-align:left">basePackageName</td>
-<td>field2</td>
-<td>yes</td>
+<td>生成的基础包路径</td>
+<td>custom</td>
 </tr>
 <tr>
 <td style="text-align:left">jaxrsVersion</td>
-<td>field2</td>
-<td>yes</td>
+<td>JAX-RS规范版本</td>
+<td>1.1 or 2.0</td>
 </tr>
 <tr>
 <td style="text-align:left">useJsr303Annotations</td>
-<td>field2</td>
-<td>yes</td>
+<td>是否使用JSR303规范</td>
+<td>boolean</td>
 </tr>
 <tr>
 <td style="text-align:left">jsonMapper</td>
-<td>field2</td>
-<td>yes</td>
+<td>json与java映射规范</td>
+<td>jackson1 jackson2 gson none</td>
 </tr>
 <tr>
 <td style="text-align:left">extensions</td>
-<td>field2</td>
-<td>yes</td>
+<td>扩展对Resource的生成控制</td>
+<td>custom</td>
 </tr>
 <tr>
 <td style="text-align:left">customAnnotator</td>
-<td>field2</td>
-<td>yes</td>
+<td>json schema到pojo的定制化注解器</td>
+<td>custom</td>
 </tr>
 </tbody>
 </table>
-<p>当你运行<code>mvn raml:generate</code>时，RAML定义的内容就会被处理生成相应的Java代码，同样在运行<code>mvn compile</code> 或者 <code>mvn package</code>命令时这个插件也会执行。</p>
+<p>运行<code>mvn raml:generate</code>时，RAML定义的内容就会被处理生成相应的Java代码，同样在运行<code>mvn compile</code> 或者 <code>mvn package</code>命令时这个插件也会执行。</p>
 
           
         
