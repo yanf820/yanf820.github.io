@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="json," />
 
 
 
@@ -89,16 +89,16 @@
 
 JSON.s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Json schema规范写法">
+<meta property="og:title" content="Jsonschema2pojo中json schema规范写法">
 <meta property="og:url" content="http://yoursite.com/2016/09/27/Jsonschema2pojo/index.html">
 <meta property="og:site_name" content="Eternity Rain">
 <meta property="og:description" content="简介日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。Jsonschema2pojo即是一种json转换java的工具
 主流JSON库在解决json2java的问题时，一般使用四种主流的JSON库来进行json解析：
 
 JSON.s">
-<meta property="og:updated_time" content="2016-10-13T03:33:32.368Z">
+<meta property="og:updated_time" content="2016-11-28T09:12:22.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Json schema规范写法">
+<meta name="twitter:title" content="Jsonschema2pojo中json schema规范写法">
 <meta name="twitter:description" content="简介日常开发中，json数据格式经常会被用到，其简单易懂的写法（对人与计算机皆如此）以及其轻量级特性非常适用于网络间的数据传递。json数据格式与java对象会经常进行相互转换，本文探讨的是json to java的转换。Jsonschema2pojo即是一种json转换java的工具
 主流JSON库在解决json2java的问题时，一般使用四种主流的JSON库来进行json解析：
 
@@ -125,7 +125,7 @@ JSON.s">
 
   <link rel="canonical" href="http://yoursite.com/2016/09/27/Jsonschema2pojo/"/>
 
-  <title> Json schema规范写法 | Eternity Rain </title>
+  <title> Jsonschema2pojo中json schema规范写法 | Eternity Rain </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="english">
@@ -183,7 +183,7 @@ JSON.s">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -193,7 +193,7 @@ JSON.s">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -245,7 +245,7 @@ JSON.s">
             
             
               
-                Json schema规范写法
+                Jsonschema2pojo中json schema规范写法
               
             
           </h1>
@@ -256,7 +256,7 @@ JSON.s">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-27T15:00:47+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -293,7 +293,7 @@ JSON.s">
 <li>Jackson</li>
 <li>JSONP</li>
 </ul>
-<h3 id="Jsonschema2pojo"><a href="#Jsonschema2pojo" class="headerlink" title="Jsonschema2pojo"></a>Jsonschema2pojo</h3><p>其底层使用的json2java工具即为Jackson 2.x，Jsonschema2pojo基于Jackson 2.x提供的java注解与规范对json数据进行解析，相应的，json数据也就需要有它本身一定的写法规范，Jsonschema2pojo定义了json schema的规范和书写方式</p>
+<h3 id="Jsonschema2pojo"><a href="#Jsonschema2pojo" class="headerlink" title="Jsonschema2pojo"></a>Jsonschema2pojo</h3><p>Jsonschema2pojo支持jackson1，jackson2，gson三种规范，基于这些规范对json数据进行解析，相应的，json数据也就需要有它本身一定的写法规范，Jsonschema2pojo定义了json schema的规范和书写方式</p>
 <h2 id="Json-Schema-feature-support"><a href="#Json-Schema-feature-support" class="headerlink" title="Json Schema feature support"></a>Json Schema feature support</h2><p>这里，我就<strong>常用的以及一些扩展的</strong>书写规范向大家一一说明，也提供了一些例子供参考。  </p>
 <p>下表为<strong>json schema书写过程中固定的一些rule</strong>，请先简单阅读：</p>
 <table>
@@ -655,6 +655,12 @@ JSON.s">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/json/" rel="tag">#json</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -719,10 +725,10 @@ JSON.s">
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -739,7 +745,7 @@ JSON.s">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -747,7 +753,7 @@ JSON.s">
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -755,8 +761,8 @@ JSON.s">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -811,7 +817,7 @@ JSON.s">
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
