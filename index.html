@@ -115,7 +115,7 @@
   <title> Eternity Rain </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="english">
 
   
 
@@ -213,6 +213,219 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/27/Hexo介绍及常用安装使用/" itemprop="url">
+                  Hexo介绍及常用安装使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-11-27T21:59:22+08:00" content="2016-11-27">
+              2016-11-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="hexo简介"><a href="#hexo简介" class="headerlink" title="hexo简介"></a>hexo简介</h2><p>hexo是使用nodejs开发的一个快速、简洁、高效、开源的静态博客生成器。</p>
+<p>hexo使用Markdown解析文章，因此，文章需采用Markdown语法编写，在几秒内，即可利用靓丽的主题生成静态网页。类似于jekyll、Octopress、Wordpress，我们可以用hexo创建自己的博客，托管到github，绑定自己的域名。</p>
+<h2 id="选择hexo的理由"><a href="#选择hexo的理由" class="headerlink" title="选择hexo的理由"></a>选择hexo的理由</h2><p>市场上也有不少其他类似hexo的博客生成器，为什么选择hexo呢？</p>
+<ul>
+<li><p>非常小巧，使用nodejs开发，下载安装时只需要几个简答的npm命令即可</p>
+</li>
+<li><p>纯静态博客，不需要额外的数据库、php环境…仅仅需要一个nodejs环境即可</p>
+</li>
+<li><p>由于是静态博客，所以，可以非常方便部署到github</p>
+</li>
+<li><p>支持markdown语法、兼容windows linux mac，高可扩展性和自定义，而且有非常多的hexo主题</p>
+</li>
+</ul>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>这里我们针对windows环境进行演示说明，其他环境大体上与此一致，详细请参照<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">官方文档</a>。</p>
+<p>在安装hexo之前，你需要保证环境中有Node.js和Git环境，这里我们就不赘述他们俩的安装。</p>
+<p>在Node.js和Git安装无误情况下，执行：</p>
+<p><code>$ npm install -g hexo-cli</code></p>
+<p>通过npm进行hexo的全局安装，这么简单，一条命令hexo即安装完成。</p>
+<h2 id="hexo使用"><a href="#hexo使用" class="headerlink" title="hexo使用"></a>hexo使用</h2><h3 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h3><p>安装hexo完成后，就可以进行使用了。</p>
+<p>首先，对于不是从github更新的hexo库，我们需要自己初始化本地hexo库：</p>
+<pre><code>$ hexo init &lt;folder&gt;
+$ cd &lt;folder&gt;
+$ npm install
+</code></pre><p>初始化完成后目录下有如下文件：</p>
+<p><img src="http://i.imgur.com/BOb0Rtx.png" alt=""></p>
+<h4 id="结构说明"><a href="#结构说明" class="headerlink" title="结构说明"></a>结构说明</h4><h5 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h5><p>网站的<a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">配置</a>信息，可以在此配置大部分的参数。</p>
+<h5 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h5><p>应用程序的信息。EJS, Stylus 和 Markdown renderer 已默认安装，你可以自由移除。</p>
+<pre><code>package.json
+{
+  &quot;name&quot;: &quot;hexo-site&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;private&quot;: true,
+  &quot;hexo&quot;: {
+    &quot;version&quot;: &quot;&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;hexo&quot;: &quot;^3.0.0&quot;,
+    &quot;hexo-generator-archive&quot;: &quot;^0.1.0&quot;,
+    &quot;hexo-generator-category&quot;: &quot;^0.1.0&quot;,
+    &quot;hexo-generator-index&quot;: &quot;^0.1.0&quot;,
+    &quot;hexo-generator-tag&quot;: &quot;^0.1.0&quot;,
+    &quot;hexo-renderer-ejs&quot;: &quot;^0.1.0&quot;,
+    &quot;hexo-renderer-stylus&quot;: &quot;^0.2.0&quot;,
+    &quot;hexo-renderer-marked&quot;: &quot;^0.2.4&quot;,
+    &quot;hexo-server&quot;: &quot;^0.1.2&quot;
+  }
+}
+</code></pre><h5 id="scaffolds"><a href="#scaffolds" class="headerlink" title="scaffolds"></a>scaffolds</h5><p>模版 文件夹。当你新建文章时，Hexo 会根据 scaffold 来建立文件。</p>
+<h5 id="source"><a href="#source" class="headerlink" title="source"></a>source</h5><p>资源文件夹是存放用户资源(blog)的地方。</p>
+<h5 id="public"><a href="#public" class="headerlink" title="public"></a>public</h5><p>Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</p>
+<h5 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h5><p>主题文件夹。Hexo会根据主题来生成静态页面。</p>
+<p>这样即建站成功。</p>
+<h3 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h3><p>完成建站，接下来当然是开始写作了。</p>
+<p><code>$ hexo new [layout] &lt;title&gt;</code></p>
+<p>这条命令用来创建一篇新文章，用hexo new创建的文章格式是md，和普通markdown文档不一样，它包含了当前layout提供的头部模板，如post layout布局的文章，顶部会出现：</p>
+<pre><code>---
+title: Hexo介绍及常用安装使用
+date: 2016-11-27 21:59:22
+tags: hexo
+---
+</code></pre><p>在_config.yml中会有default_layout这个参数，默认是post，也就是说不加<code>layout</code>参数时，<code>new</code>出来的文章使用post布局。当然，default_layout可以根据自己的需要进行更改。</p>
+<h4 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h4><p>Hexo 有三种默认布局：post、page 和 draft，它们分别对应不同的路径，而你自定义的其他布局和 post 相同，都将储存到 source/_posts 文件夹。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">布局</th>
+<th>路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">post</td>
+<td>source/_posts</td>
+</tr>
+<tr>
+<td style="text-align:left">page</td>
+<td>source</td>
+</tr>
+<tr>
+<td style="text-align:left">draft</td>
+<td>source/_drafts</td>
+</tr>
+</tbody>
+</table>
+<p>上面说过post布局的样子，对于page和draft，你可以尝试用它们 new 一篇新文章来看看效果。</p>
+<h4 id="文件名称"><a href="#文件名称" class="headerlink" title="文件名称"></a>文件名称</h4><p>Hexo 默认以标题做为文件名称，但你可以编辑_config.yml中的 new_post_name 参数来改变默认的文件名称，举例来说，设为 :year-:month-:day-:title.md 可让您更方便的通过日期来管理文章。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">:title</td>
+<td>标题（小写，空格将会被替换为短杠）</td>
+</tr>
+<tr>
+<td style="text-align:left">:year</td>
+<td>建立的年份，比如， 2016</td>
+</tr>
+<tr>
+<td style="text-align:left">:month</td>
+<td>建立的月份（有前导零），比如， 04</td>
+</tr>
+<tr>
+<td style="text-align:left">:i_month</td>
+<td>建立的月份（无前导零），比如， 4</td>
+</tr>
+<tr>
+<td style="text-align:left">:day</td>
+<td>建立的日期（有前导零），比如， 07</td>
+</tr>
+<tr>
+<td style="text-align:left">:i_day</td>
+<td>建立的日期（无前导零），比如， 7</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -390,6 +603,11 @@
 <td>custom</td>
 </tr>
 <tr>
+<td style="text-align:left">removeOldOutput</td>
+<td>是否删除上一次的输出</td>
+<td>boolean</td>
+</tr>
+<tr>
 <td style="text-align:left">jaxrsVersion</td>
 <td>JAX-RS规范版本</td>
 <td>1.1 or 2.0</td>
@@ -412,6 +630,46 @@
 <tr>
 <td style="text-align:left">customAnnotator</td>
 <td>json schema到pojo的定制化注解器</td>
+<td>custom</td>
+</tr>
+<tr>
+<td style="text-align:left">jsonMapperConfiguration</td>
+<td>对于json映射的配置</td>
+<td>“generateBuilders”,”includeHashcodeAndEquals”,”includeToString”,”useLongIntegers”</td>
+</tr>
+<tr>
+<td style="text-align:left">skip</td>
+<td>跳过插件的执行</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">modelPackageName</td>
+<td>设置model对象所在的目录名称(basepackage+modelpackage,如果schema中已经指定了javapackage，则此配置不生效)</td>
+<td>custom</td>
+</tr>
+<tr>
+<td style="text-align:left">generateClientProxy</td>
+<td>是否生成客户端代理(只生成proxy，覆盖model和resource)</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">mapToVoid</td>
+<td>true:如果resource定义的方法的response没有body，生成的java method返回值将会是void，不是wrapper response</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">useTitlePropertyForSchemaNames</td>
+<td>将title属性作为schema的名称(没试出来)</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">asyncResourceTrait</td>
+<td>【待定】</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">ignoredParameters</td>
+<td>定义忽略参数列表，忽略指定的resource query参数</td>
 <td>custom</td>
 </tr>
 </tbody>
@@ -1673,7 +1931,7 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -1690,7 +1948,7 @@ public void removeBook(@PathParam(&quot;isbn&quot;) String isbn,@PathParam(&quot
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>

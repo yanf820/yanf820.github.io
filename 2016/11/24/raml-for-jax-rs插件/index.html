@@ -96,7 +96,7 @@
 设计原则RAML生成JAX-RS所有发行版本（Eclipse Plugin，Maven Plugin和Jar）的工作方式如下：
 
 生成接口，并在RAML定义">
-<meta property="og:updated_time" content="2016-11-25T02:37:02.140Z">
+<meta property="og:updated_time" content="2016-11-28T01:45:48.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="raml-for-jax-rs插件">
 <meta name="twitter:description" content="简介raml-for-jax-rs插件是mulesoft开发的，是实现被JAX-RS注解的java代码与Raml Api描述之间相互转换的工具。其中包含jaxrs-to-raml和raml-to-jaxrs两个主要工程，分别实现一种转换过程。
@@ -128,7 +128,7 @@
   <title> raml-for-jax-rs插件 | Eternity Rain </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="english">
 
   
 
@@ -396,6 +396,11 @@
 <td>custom</td>
 </tr>
 <tr>
+<td style="text-align:left">removeOldOutput</td>
+<td>是否删除上一次的输出</td>
+<td>boolean</td>
+</tr>
+<tr>
 <td style="text-align:left">jaxrsVersion</td>
 <td>JAX-RS规范版本</td>
 <td>1.1 or 2.0</td>
@@ -418,6 +423,46 @@
 <tr>
 <td style="text-align:left">customAnnotator</td>
 <td>json schema到pojo的定制化注解器</td>
+<td>custom</td>
+</tr>
+<tr>
+<td style="text-align:left">jsonMapperConfiguration</td>
+<td>对于json映射的配置</td>
+<td>“generateBuilders”,”includeHashcodeAndEquals”,”includeToString”,”useLongIntegers”</td>
+</tr>
+<tr>
+<td style="text-align:left">skip</td>
+<td>跳过插件的执行</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">modelPackageName</td>
+<td>设置model对象所在的目录名称(basepackage+modelpackage,如果schema中已经指定了javapackage，则此配置不生效)</td>
+<td>custom</td>
+</tr>
+<tr>
+<td style="text-align:left">generateClientProxy</td>
+<td>是否生成客户端代理(只生成proxy，覆盖model和resource)</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">mapToVoid</td>
+<td>true:如果resource定义的方法的response没有body，生成的java method返回值将会是void，不是wrapper response</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">useTitlePropertyForSchemaNames</td>
+<td>将title属性作为schema的名称(没试出来)</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">asyncResourceTrait</td>
+<td>【待定】</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">ignoredParameters</td>
+<td>定义忽略参数列表，忽略指定的resource query参数</td>
 <td>custom</td>
 </tr>
 </tbody>
@@ -455,6 +500,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/27/Hexo介绍及常用安装使用/" rel="prev" title="Hexo介绍及常用安装使用">
+                Hexo介绍及常用安装使用 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -522,7 +571,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -539,7 +588,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
