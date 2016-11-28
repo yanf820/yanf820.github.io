@@ -399,6 +399,61 @@ tags: hexo
 </tr>
 </tbody>
 </table>
+<p>文件创建成功，剩下的就是用markdown语法进行愉快的创作了！</p>
+<h3 id="生成及部署"><a href="#生成及部署" class="headerlink" title="生成及部署"></a>生成及部署</h3><h4 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h4><p>文档编写完成后，想要对外发布就得先进行文章的解析和资源的生成：</p>
+<p><code>$ hexo generate</code></p>
+<p>该命令生成静态网页文件。</p>
+<h4 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h4><p>生成完可以在本地进行启动测试：</p>
+<p><code>$ hexo server</code></p>
+<p>启动后，可以通过<code>http://localhost:4000/</code>访问本地blog。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-p,–port</td>
+<td>重设端口</td>
+</tr>
+<tr>
+<td style="text-align:left">-s,–static</td>
+<td>只使用静态文件</td>
+</tr>
+<tr>
+<td style="text-align:left">-l,–log</td>
+<td>启动日记记录，使用覆盖记录格式</td>
+</tr>
+</tbody>
+</table>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p><code>$ hexo deploy</code></p>
+<p>该命令用来对generate后的资源进行部署，但是注意，使用该命令之前，需要安装hexo-deployer-git插件：</p>
+<p><code>$ npm install hexo-deployer-git</code></p>
+<p>安装完成，我们可以进行部署，这里我们还得明确一点，部署到哪？</p>
+<p>在_config.yml中可以指定部署目的地：</p>
+<pre><code>deploy:
+- type: git
+  repo:
+- type: heroku
+  repo:
+</code></pre><p>对于git方式来说，repo建议使用ssh协议而非https协议，还有，你需要提前在github上配置好当前机器的公钥。</p>
+<p>这个指定的git repo是一个<a href="https://pages.github.com/" target="_blank" rel="external"><strong>github pages</strong></a>，他是github为方便程序员们发布项目的说明文档而开放的服务，而 gh Pgaes 的美好之处在于，它有足以胜任成为一个独立博客的能耐。这里不详细介绍，你可以去官网学习。</p>
+<p>在deploy之后，访问github pages地址你会发现文档已经全部发布。</p>
+<p><img src="http://i.imgur.com/v1K2xKw.jpg" alt=""></p>
+<p>如果嫌麻烦，可以执行:</p>
+<p><code>$ hexo generate -d</code></p>
+<p>or</p>
+<p><code>$ hexo g -d</code></p>
+<p>将编译和部署合并成一步操作</p>
+<h4 id="清理"><a href="#清理" class="headerlink" title="清理"></a>清理</h4><p><code>$ hexo clean</code></p>
+<p>清理掉以生成的静态网页相关文件</p>
+<h3 id="针对github上已有的blog仓库"><a href="#针对github上已有的blog仓库" class="headerlink" title="针对github上已有的blog仓库"></a>针对github上已有的blog仓库</h3><p>实际工作中，往往是已经有一个blog仓库，我们需要更新它到本地并用hexo去管理。</p>
+<p>由于hexo管理下的node_modules文件夹过大，一般我们不会将其放在github中，所以clone下来的文件夹中没有node_modules，需要执行如下命令进行node_modules的安装：</p>
+<pre><code>$ npm install
+</code></pre><p>这种情况下不需要执行初始化<code>hexo init</code>了，之后的其他操作都还是一样的。</p>
+<p><strong>注：以上对于hexo的常用知识进行了介绍，如果你还需要了解更详细的内容，从<a href="https://hexo.io/docs/" target="_blank" rel="external">这里</a>到官网进行学习。</strong></p>
 
           
         
